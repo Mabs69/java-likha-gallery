@@ -3,7 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Java%20Likha%20Gallery/src/LoginRegister.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Java%20Likha%20Gallery/src/ArtistProfile.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Java%20Likha%20Gallery/src/ArtistGalleryView.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Java%20Likha%20Gallery/src/ArtistEditProfile.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Java%20Likha%20Gallery/src/ArtistChangePassword.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Java%20Likha%20Gallery/src/ArtistGallery.java</file>
         </group>
     </open-files>
 </project-private>
