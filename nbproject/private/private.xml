@@ -2,6 +2,26 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group/>
+=======
+<<<<<<< HEAD
+        <group/>
+=======
+        <group>
+<<<<<<< HEAD
+            <file>file:/C:/Users/Keans%20Erol%20Austria/Desktop/Java-Likha-Gallery/java-likha-gallery/src/Login.java</file>
+            <file>file:/C:/Users/Keans%20Erol%20Austria/Desktop/Java-Likha-Gallery/java-likha-gallery/src/Register.java</file>
+            <file>file:/C:/Users/Keans%20Erol%20Austria/Desktop/Java-Likha-Gallery/java-likha-gallery/src/LoginRegister.java</file>
+=======
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Java%20Likha%20Gallery/src/ArtistProfile.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Java%20Likha%20Gallery/src/ArtistGalleryView.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Java%20Likha%20Gallery/src/ArtistEditProfile.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Java%20Likha%20Gallery/src/ArtistChangePassword.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Java%20Likha%20Gallery/src/ArtistGallery.java</file>
+>>>>>>> c1fb49dbc348084118e8bc4e0419aa4ac1103370
+        </group>
+>>>>>>> e62c787d44951152503af0c1e32528e3376d6b06
+>>>>>>> b309592ef8744e7332c3885b6743c5c3a8953d3d
     </open-files>
 </project-private>
