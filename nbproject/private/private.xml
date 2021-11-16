@@ -9,17 +9,10 @@
         <group/>
 =======
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/Keans%20Erol%20Austria/Desktop/Java-Likha-Gallery/java-likha-gallery/src/Login.java</file>
-            <file>file:/C:/Users/Keans%20Erol%20Austria/Desktop/Java-Likha-Gallery/java-likha-gallery/src/Register.java</file>
-            <file>file:/C:/Users/Keans%20Erol%20Austria/Desktop/Java-Likha-Gallery/java-likha-gallery/src/LoginRegister.java</file>
-=======
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Java%20Likha%20Gallery/src/ArtistProfile.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Java%20Likha%20Gallery/src/ArtistGalleryView.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Java%20Likha%20Gallery/src/ArtistEditProfile.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Java%20Likha%20Gallery/src/ArtistChangePassword.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Java%20Likha%20Gallery/src/ArtistGallery.java</file>
->>>>>>> c1fb49dbc348084118e8bc4e0419aa4ac1103370
+            <file>file:/C:/Users/carlo/Documents/NetBeansProjects/Likhain/java-likha-gallery/src/allArtsView.java</file>
+            <file>file:/C:/Users/carlo/Documents/NetBeansProjects/Likhain/java-likha-gallery/src/artistDescription.java</file>
+            <file>file:/C:/Users/carlo/Documents/NetBeansProjects/Likhain/java-likha-gallery/src/artDescription.java</file>
+            <file>file:/C:/Users/carlo/Documents/NetBeansProjects/Likhain/java-likha-gallery/src/artistList.java</file>
         </group>
 >>>>>>> e62c787d44951152503af0c1e32528e3376d6b06
 >>>>>>> b309592ef8744e7332c3885b6743c5c3a8953d3d
