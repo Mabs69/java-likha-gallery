@@ -44,6 +44,7 @@ public class Login extends javax.swing.JFrame {
         buttonLogin = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabelCreateAccount = new javax.swing.JLabel();
+        jLabelCreateAccount1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,10 +71,21 @@ public class Login extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel4.setText("LIKHAIN ART GALLERY");
 
-        jLabelCreateAccount.setText("Don't have an account? Click here to create");
+        jLabelCreateAccount.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 12)); // NOI18N
+        jLabelCreateAccount.setForeground(new java.awt.Color(51, 51, 255));
+        jLabelCreateAccount.setText("Click Here");
+        jLabelCreateAccount.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelCreateAccount.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelCreateAccountMouseClicked(evt);
+            }
+        });
+
+        jLabelCreateAccount1.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 12)); // NOI18N
+        jLabelCreateAccount1.setText("Don't have an account?");
+        jLabelCreateAccount1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelCreateAccount1MouseClicked(evt);
             }
         });
 
@@ -96,8 +108,12 @@ public class Login extends javax.swing.JFrame {
                         .addGap(120, 120, 120)
                         .addComponent(buttonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(97, 97, 97)
-                        .addComponent(jLabelCreateAccount)))
+                        .addGap(133, 133, 133)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelCreateAccount1)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(35, 35, 35)
+                                .addComponent(jLabelCreateAccount)))))
                 .addContainerGap(59, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -116,8 +132,10 @@ public class Login extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(buttonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelCreateAccount1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelCreateAccount)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -177,12 +195,16 @@ public class Login extends javax.swing.JFrame {
                     a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Username and Password is incorrect.");
+                JOptionPane.showMessageDialog(null, "Invalid credentials.");
             }
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_buttonLoginActionPerformed
+
+    private void jLabelCreateAccount1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCreateAccount1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabelCreateAccount1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -225,6 +247,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelCreateAccount;
+    private javax.swing.JLabel jLabelCreateAccount1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField txtpass;
     private javax.swing.JTextField txtuser;
