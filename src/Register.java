@@ -223,7 +223,7 @@ public class Register extends javax.swing.JFrame {
             PreparedStatement ps;
 
             try {
-                ps = con.prepareStatement("INSERT INTO user (`firstname`, `lastname`, `username`, `password`) VALUES (?,?,?,?)");
+                ps = con.prepareStatement("INSERT INTO registration (`username`, `password`, `user_type`) VALUES (?,?,?)");//KULANG PA NG PIC / DUN SA RADIO NOT SURE KUNG TAMA
                 ps.setString(1, txtUsername.getText());
                 ps.setString(2, String.valueOf(txtPassword.getPassword()));
                 ps.setString(3, radioArtist.getText());
@@ -257,7 +257,7 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegisterActionPerformed
 
       public boolean verifData() {
-        //[Username - Password] are empty KULANG PA SA RADIO USER/ARTIST
+        //[Username - Password] are empty KULANG PA SA RADIO USER/ARTIST/PIC
         if(txtUsername.getText().equals("") && String.valueOf(txtPassword.getPassword()).equals("")) {
             JOptionPane.showMessageDialog(null, "One or more fields are empty");
             return false;
