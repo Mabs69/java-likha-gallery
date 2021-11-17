@@ -62,6 +62,7 @@ public class Register extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         txtLName = new javax.swing.JTextField();
         txtFName = new javax.swing.JTextField();
+        jLabelLoginHere1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -144,14 +145,17 @@ public class Register extends javax.swing.JFrame {
         jPanel1.add(btnUpload);
         btnUpload.setBounds(430, 380, 82, 33);
 
-        jLabelLoginHere.setText("Already have an account? LOGIN HERE");
+        jLabelLoginHere.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 12)); // NOI18N
+        jLabelLoginHere.setForeground(new java.awt.Color(0, 51, 255));
+        jLabelLoginHere.setText("Click Here");
+        jLabelLoginHere.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelLoginHere.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelLoginHereMouseClicked(evt);
             }
         });
         jPanel1.add(jLabelLoginHere);
-        jLabelLoginHere.setBounds(220, 480, 200, 20);
+        jLabelLoginHere.setBounds(290, 500, 60, 20);
 
         jLabelImage.setForeground(new java.awt.Color(153, 153, 153));
         jLabelImage.setName(""); // NOI18N
@@ -176,6 +180,16 @@ public class Register extends javax.swing.JFrame {
         jPanel1.add(txtFName);
         txtFName.setBounds(20, 330, 290, 30);
 
+        jLabelLoginHere1.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 12)); // NOI18N
+        jLabelLoginHere1.setText("Already have an account?");
+        jLabelLoginHere1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelLoginHere1MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabelLoginHere1);
+        jLabelLoginHere1.setBounds(250, 480, 140, 20);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -185,7 +199,7 @@ public class Register extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -206,6 +220,7 @@ public class Register extends javax.swing.JFrame {
 
             Connection con = myConnection.getConnection();
             PreparedStatement ps;
+            PreparedStatement ps2;
 
             try {
                 ps = con.prepareStatement("INSERT INTO registration (`username`, `password`, `fname`, `lname`, `user_type`, `pic`) VALUES (?,?,?,?,?,?)");//KULANG PA NG PIC / DUN SA RADIO NOT SURE KUNG TAMA
@@ -227,6 +242,20 @@ public class Register extends javax.swing.JFrame {
 
                     if(ps.executeUpdate() != 0) {
                         JOptionPane.showMessageDialog(null, "Account Created");
+                        
+                        if (getUserType().equals("user")){
+                            ps2 = con.prepareStatement("INSERT INTO visitor (user_id) SELECT user_id FROM registration WHERE username = ?");
+                            ps2.setString(1, txtUsername.getText());
+                            ps2.executeUpdate();
+                            
+                        }
+                        else if (getUserType().equals("artist")){
+                            ps2 = con.prepareStatement("INSERT INTO artist (user_id) SELECT user_id FROM registration WHERE username = ?");
+                            ps2.setString(1, txtUsername.getText());
+                            ps2.executeUpdate();
+                        }
+                        
+                            
                         Login lf = new Login();
                         lf.setVisible(true);
                         lf.pack();
@@ -252,6 +281,10 @@ public class Register extends javax.swing.JFrame {
         uploadFunction uf = new uploadFunction();
         imagePath = uf.browseImage(jLabelImage);
     }//GEN-LAST:event_btnUploadActionPerformed
+
+    private void jLabelLoginHere1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelLoginHere1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabelLoginHere1MouseClicked
 
       public boolean verifData() {
         //[Username - Password] are empty KULANG PA SA RADIO USER/ARTIST/PIC
@@ -356,6 +389,7 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabelImage;
     private javax.swing.JLabel jLabelLoginHere;
+    private javax.swing.JLabel jLabelLoginHere1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton radioArtist;
     private javax.swing.JRadioButton radioUser;
