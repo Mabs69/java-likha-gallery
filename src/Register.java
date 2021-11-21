@@ -217,63 +217,23 @@ public class Register extends javax.swing.JFrame {
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         if(verifData()) {
-
-            Connection con = myConnection.getConnection();
-            PreparedStatement ps;
-            PreparedStatement ps2;
-
             try {
-                ps = con.prepareStatement("INSERT INTO registration (`username`, `password`, `fname`, `lname`, `user_type`, `pic`) VALUES (?,?,?,?,?,?)");//KULANG PA NG PIC / DUN SA RADIO NOT SURE KUNG TAMA
-                ps.setString(1, txtUsername.getText());
-                ps.setString(2, String.valueOf(txtPassword.getPassword()));
-                ps.setString(3, txtLName.getText());
-                ps.setString(4, txtLName.getText());
-                ps.setString(5, getUserType());
+                String u = txtUsername.getText();
+                String p = String.valueOf(txtPassword.getPassword());
+                String f = txtFName.getText();
+                String l = txtLName.getText();
+                String t = getUserType();
                 
                 Path path = Paths.get(imagePath);
                 byte[] img = Files.readAllBytes(path);
                 
-                ps.setBytes(6, img);
-
-                if(isUsernameExist(txtUsername.getText())) {
-                    JOptionPane.showMessageDialog(null, "Username already exists!");
-                }
-                else {
-
-                    if(ps.executeUpdate() != 0) {
-                        JOptionPane.showMessageDialog(null, "Account Created");
-                        
-                        if (getUserType().equals("user")){
-                            ps2 = con.prepareStatement("INSERT INTO visitor (user_id) SELECT user_id FROM registration WHERE username = ?");
-                            ps2.setString(1, txtUsername.getText());
-                            ps2.executeUpdate();
-                            
-                        }
-                        else if (getUserType().equals("artist")){
-                            ps2 = con.prepareStatement("INSERT INTO artist (user_id) SELECT user_id FROM registration WHERE username = ?");
-                            ps2.setString(1, txtUsername.getText());
-                            ps2.executeUpdate();
-                        }
-                        
-                            
-                        Login lf = new Login();
-                        lf.setVisible(true);
-                        lf.pack();
-                        lf.setLocationRelativeTo(null);
-                        lf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                Queries q = new Queries();
+                q.insertRegister(u, p, f, l, t, img);
                 
-                        this.dispose();
-                    }
-                    else {
-                        JOptionPane.showMessageDialog(null, "Something Went Wrong");
-                    }
-                }
-
-            } catch (IOException | SQLException ex) {
-                System.out.println(ex.getMessage());
+                loginPage(); 
+            } catch (IOException ex) {
                 Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
             }
-
         }
     }//GEN-LAST:event_btnRegisterActionPerformed
 
@@ -283,7 +243,7 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUploadActionPerformed
 
     private void jLabelLoginHere1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelLoginHere1MouseClicked
-        // TODO add your handling code here:
+        loginPage();
     }//GEN-LAST:event_jLabelLoginHere1MouseClicked
 
       public boolean verifData() {
@@ -316,30 +276,17 @@ public class Register extends javax.swing.JFrame {
           
           return v;
       }
+      
+      public void loginPage() {
+            Login lf = new Login();
+            lf.setVisible(true);
+            lf.pack();
+            lf.setLocationRelativeTo(null);
+            lf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            this.dispose();
+      }
     
-    public boolean isUsernameExist(String un) {
-        
-        boolean uExist = false;
-        Connection con = myConnection.getConnection();
-        PreparedStatement ps;
-        ResultSet rs;
-        
-        try {
-            ps = con.prepareStatement("SELECT * FROM registration WHERE `username` = ?");
-            ps.setString(1, txtUsername.getText());
-            
-            rs = ps.executeQuery();
-            
-            if(rs.next()) {
-                uExist = true;
-            }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return uExist;
-    
-    }
+   
     /**
      * @param args the command line arguments
      */

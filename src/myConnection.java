@@ -11,7 +11,7 @@ public class myConnection {
         Connection con = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost/likha", "root", "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/gallery", "root", "");
         } catch (ClassNotFoundException | SQLException ex) {
             System.out.println(ex.getMessage());
         }
