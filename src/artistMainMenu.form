@@ -108,6 +108,9 @@
               <Font name="Microsoft Sans Serif" size="24" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="PIC"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton2">

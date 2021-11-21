@@ -73,6 +73,7 @@ public class artistMainMenu extends javax.swing.JFrame {
 
         jLabelProfilePic.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 24)); // NOI18N
         jLabelProfilePic.setText("PIC");
+        jLabelProfilePic.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jButton2.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jButton2.setText("My Gallery");

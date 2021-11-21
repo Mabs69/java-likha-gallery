@@ -66,11 +66,17 @@ public class userMainMenu extends javax.swing.JFrame {
         jButtonLogout = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(680, 408));
+        setPreferredSize(new java.awt.Dimension(650, 370));
         getContentPane().setLayout(null);
 
         jLabelProfilePic.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 24)); // NOI18N
         jLabelProfilePic.setText("PIC");
+        jLabelProfilePic.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelProfilePic.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelProfilePicMouseClicked(evt);
+            }
+        });
         getContentPane().add(jLabelProfilePic);
         jLabelProfilePic.setBounds(560, 10, 60, 50);
 
@@ -114,6 +120,14 @@ public class userMainMenu extends javax.swing.JFrame {
         lr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.dispose();
     }//GEN-LAST:event_jButtonLogoutActionPerformed
+
+    private void jLabelProfilePicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelProfilePicMouseClicked
+        userProfile up = new userProfile();
+        up.setVisible(true);
+        up.pack();
+        up.setLocationRelativeTo(null);
+        up.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }//GEN-LAST:event_jLabelProfilePicMouseClicked
 
     /**
      * @param args the command line arguments
