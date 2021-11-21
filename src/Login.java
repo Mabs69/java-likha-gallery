@@ -25,6 +25,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -162,43 +163,12 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelCreateAccountMouseClicked
 
     private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
-       Connection con = myConnection.getConnection();
-        PreparedStatement ps;
-        ResultSet rs;
-        
-        PreparedStatement ps1;
-        ResultSet rs1;
-        
-        try {
-            ps = con.prepareStatement("SELECT `username`, `password` FROM `registration` WHERE `username` = ? AND `password` = ?");
-            ps.setString(1, txtuser.getText());
-            ps.setString(2, String.valueOf(txtpass.getPassword()));
-            rs = ps.executeQuery();
+        if(emptyChecker()) {
+            String u = txtuser.getText();
+            String p = String.valueOf(txtpass.getPassword());
             
-            if (rs.next()) {
-                ps1 = con.prepareStatement("SELECT `username`, `user_type` FROM `registration` WHERE `username` = ? AND `user_type` = ?");
-                ps1.setString(1, txtuser.getText());
-                ps1.setString(2, "artist");
-                rs1 = ps1.executeQuery();
-                
-                if (rs1.next()){
-                    userMainMenu u = new userMainMenu();
-                    u.setVisible(true);
-                    u.pack();
-                    u.setLocationRelativeTo(null);
-                    u.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                } else {
-                    artistMainMenu a = new artistMainMenu();
-                    a.setVisible(true);
-                    a.pack();
-                    a.setLocationRelativeTo(null);
-                    a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "Invalid credentials.");
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            Queries q = new Queries();
+            q.userLogin(u, p);
         }
     }//GEN-LAST:event_buttonLoginActionPerformed
 
@@ -206,6 +176,15 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabelCreateAccount1MouseClicked
 
+    public boolean emptyChecker() {
+        if (txtuser.getText().isEmpty() && txtpass.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please fill up all required fields");
+            return false;
+        }
+        else
+            return true;
+    }
+    
     /**
      * @param args the command line arguments
      */
