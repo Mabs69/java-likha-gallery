@@ -123,4 +123,50 @@ public class Queries {
         return uExist;
     
     }
+    
+    public int getCurrentUserID(String un) {
+        int u = 0;
+        Connection con = myConnection.getConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+        
+        try {
+            ps = con.prepareStatement("SELECT `user_id` FROM registration WHERE `username` = ?");
+            ps.setString(1, un);
+            
+            rs = ps.executeQuery();
+            
+            if(rs.next()) {
+                u = rs.getInt("user_id");
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return u;
+    }
+    
+    public byte[] getProfilePicture(int u) {
+        byte[] path = null;
+        Connection con = myConnection.getConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+        
+        try {
+            ps = con.prepareStatement("SELECT `pic` FROM registration WHERE `user_id` = ?");
+            ps.setInt(1, u);
+            
+            rs = ps.executeQuery();
+            
+            if(rs.next()) {
+                path = rs.getBytes("pic");
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+        return path;
+    }
 }
