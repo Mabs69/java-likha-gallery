@@ -169,6 +169,7 @@ public class Login extends javax.swing.JFrame {
             
             Queries q = new Queries();
             q.userLogin(u, p);
+            this.dispose();
         }
     }//GEN-LAST:event_buttonLoginActionPerformed
 
