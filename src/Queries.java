@@ -52,7 +52,7 @@ public class Queries {
                         JOptionPane.showMessageDialog(null, "Something Went Wrong");
                     }
                 }
-
+                
             } catch (SQLException ex) {
                 System.out.println(ex.getMessage());
                 Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
