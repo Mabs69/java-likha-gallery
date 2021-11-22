@@ -28,7 +28,7 @@ public class allArtsView extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
 
         getArt();
-        displayArt();
+        displayArt();   
     }
 
     /**
@@ -141,7 +141,7 @@ public class allArtsView extends javax.swing.JFrame {
             if(rsA.next()) {
                 lblPic.setIcon(new uploadFunction().resizePic(null, rsA.getBytes("art_img"), lblPic.getWidth(), lblPic.getHeight()));
                 lblName.setText(rsA.getString("art_name"));
-                lblDesc.setText(rsA.getString("art_desc"));
+                lblDesc.setText(rsA.getString("art_desc"));           
             }
         } catch (SQLException ex) {
             Logger.getLogger(allArtsView.class.getName()).log(Level.SEVERE, null, ex);
@@ -154,7 +154,7 @@ public class allArtsView extends javax.swing.JFrame {
             if(rsA.previous()) {
                 lblPic.setIcon(new uploadFunction().resizePic(null, rsA.getBytes("art_img"), lblPic.getWidth(), lblPic.getHeight()));
                 lblName.setText(rsA.getString("art_name"));
-                lblDesc.setText(rsA.getString("art_desc"));
+                lblDesc.setText(rsA.getString("art_desc"));              
             }
         } catch (SQLException ex) {
             Logger.getLogger(allArtsView.class.getName()).log(Level.SEVERE, null, ex);
