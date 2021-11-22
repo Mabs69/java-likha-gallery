@@ -88,6 +88,11 @@ public class artistMainMenu extends javax.swing.JFrame {
 
         jButton4.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jButton4.setText("Gallery");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jLabelUsername.setText("Username");
 
@@ -167,6 +172,15 @@ public class artistMainMenu extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButtonLogoutActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        allArtsView aav = new allArtsView();
+        aav.setVisible(true);
+        aav.pack();
+        aav.setLocationRelativeTo(null);
+        aav.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     private void jLabelProfilePicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelProfilePicMouseClicked
         ArtistProfile a = new ArtistProfile();
         this.dispose();
@@ -175,6 +189,7 @@ public class artistMainMenu extends javax.swing.JFrame {
         a.setLocationRelativeTo(null);
         a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }//GEN-LAST:event_jLabelProfilePicMouseClicked
+
 
     /**
      * @param args the command line arguments
