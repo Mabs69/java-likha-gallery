@@ -1,3 +1,6 @@
+
+import javax.swing.JFrame;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -182,7 +185,12 @@ public class ArtistEditProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        
+        ArtistProfile ap = new ArtistProfile();
+        ap.setVisible(true);
+        ap.pack();
+        ap.setLocationRelativeTo(null);
+        ap.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
     }//GEN-LAST:event_btnCancelActionPerformed
 
     /**

@@ -201,7 +201,11 @@ public class ArtistProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_editActionPerformed
 
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
-        
+        artistMainMenu amm = new artistMainMenu();
+        amm.setVisible(true);
+        amm.pack();
+        amm.setLocationRelativeTo(null);
+        amm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }//GEN-LAST:event_btn_backActionPerformed
 
     private void displayProfile(){
@@ -230,8 +234,8 @@ public class ArtistProfile extends javax.swing.JFrame {
                         jLabeldesc.setText("NO DESCRIPTION YET");
                         jLabelcd.setText("NO CONTACT DETAILS YET");
                     } else {
-                        jLabeldesc.setText("a.artist_desc");
-                        jLabelcd.setText("a.artist_cd");
+                        jLabeldesc.setText(rs.getString("a.artist_desc"));
+                        jLabelcd.setText(rs.getString("a.artist_cd"));
                     }
                 }
             }
