@@ -123,4 +123,130 @@ public class Queries {
         return uExist;
     
     }
+    
+    public int getCurrentUserID(String un) {
+        int u = 0;
+        Connection con = myConnection.getConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+        
+        try {
+            ps = con.prepareStatement("SELECT `user_id` FROM registration WHERE `username` = ?");
+            ps.setString(1, un);
+            
+            rs = ps.executeQuery();
+            
+            if(rs.next()) {
+                u = rs.getInt("user_id");
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return u;
+    }
+    
+    public void updateUserProfile(String f, String l, byte[] i, String u) {
+        Connection con = myConnection.getConnection();
+        PreparedStatement ps;
+        
+        try {
+            ps = con.prepareStatement("UPDATE registration SET fname = ?, lname = ?, pic = ? WHERE username = ?");
+            ps.setString(1, f);
+            ps.setString(2, l);
+            ps.setBytes(3, i);
+            ps.setString(4, u);
+            
+            if(ps.executeUpdate() != 0) {
+                JOptionPane.showMessageDialog(null, "Profile Updated");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public void updateUserProfile2(String f, String l, String u) {
+        Connection con = myConnection.getConnection();
+        PreparedStatement ps;
+        
+        try {
+            ps = con.prepareStatement("UPDATE registration SET fname = ?, lname = ? WHERE username = ?");
+            ps.setString(1, f);
+            ps.setString(2, l);
+            ps.setString(3, u);
+            
+            if(ps.executeUpdate() != 0) {
+                JOptionPane.showMessageDialog(null, "Profile Updated");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public boolean verifyCurrentPassword(String u, String p) {
+        Connection con = myConnection.getConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+        
+        boolean pass = false;
+        
+        try {
+            ps = con.prepareStatement("SELECT `password` FROM registration WHERE `username` = ? and `password` = ?");
+            ps.setString(1, u);
+            ps.setString(2, p);
+            rs = ps.executeQuery();
+            
+            if(rs.next())
+                pass = true;
+            else
+                JOptionPane.showMessageDialog(null, "Invalid Current Password");
+        } catch (SQLException ex) {
+            Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+         return pass;
+    }
+    
+    public void updatePassword(String u, String p) {
+        Connection con = myConnection.getConnection();
+        PreparedStatement ps;
+        
+        try {
+            ps = con.prepareStatement("UPDATE registration SET password = ? WHERE `username` = ?");
+            ps.setString(1, p);
+            ps.setString(2, u);
+            if(ps.executeUpdate() != 0)
+                JOptionPane.showMessageDialog(null, "Password Updated");
+        } catch (SQLException ex) {
+            Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+        
+    }
+    
+    public byte[] getProfilePicture(int u) {
+        byte[] path = null;
+        Connection con = myConnection.getConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+        
+        try {
+            ps = con.prepareStatement("SELECT `pic` FROM registration WHERE `user_id` = ?");
+            ps.setInt(1, u);
+            
+            rs = ps.executeQuery();
+            
+            if(rs.next()) {
+                path = rs.getBytes("pic");
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+        return path;
+    }
 }
