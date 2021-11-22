@@ -185,7 +185,7 @@ public class changePassword extends javax.swing.JFrame {
         }
     }
     public void back() {
-        userProfile up = new userProfile();
+        userProfileEdit up = new userProfileEdit();
         up.setVisible(true);
         up.pack();
         up.setLocationRelativeTo(null);

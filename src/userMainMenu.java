@@ -122,11 +122,12 @@ public class userMainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonLogoutActionPerformed
 
     private void jLabelProfilePicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelProfilePicMouseClicked
-        userProfile up = new userProfile();
+        userProfileView up = new userProfileView();
         up.setVisible(true);
         up.pack();
         up.setLocationRelativeTo(null);
         up.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
     }//GEN-LAST:event_jLabelProfilePicMouseClicked
 
     /**
