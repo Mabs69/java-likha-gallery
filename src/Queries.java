@@ -124,6 +124,29 @@ public class Queries {
     
     }
     
+    public String getUserType(String un) {
+        String t = null;
+        Connection con = myConnection.getConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+        
+        try {
+            ps = con.prepareStatement("SELECT `user_type` FROM registration WHERE `username` = ?");
+            ps.setString(1, un);
+            
+            rs = ps.executeQuery();
+            
+            if(rs.next()) {
+                t = rs.getString("user_type");
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return t;
+    }
+    
     public int getCurrentUserID(String un) {
         int u = 0;
         Connection con = myConnection.getConnection();

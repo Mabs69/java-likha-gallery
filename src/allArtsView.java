@@ -163,12 +163,22 @@ public class allArtsView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPrevActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        artistMainMenu amm = new artistMainMenu();
-        amm.setVisible(true);
-        amm.pack();
-        amm.setLocationRelativeTo(null);
-        amm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose();
+        if(Login.currentUserType.equals("artist")) {        
+            artistMainMenu amm = new artistMainMenu();
+            amm.setVisible(true);
+            amm.pack();
+            amm.setLocationRelativeTo(null);
+            amm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            this.dispose();
+        }
+        else {
+            userMainMenu umm = new userMainMenu();
+            umm.setVisible(true);
+            umm.pack();
+            umm.setLocationRelativeTo(null);
+            umm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            this.dispose();
+        }
     }//GEN-LAST:event_btnBackActionPerformed
     
     private void displayArt() {

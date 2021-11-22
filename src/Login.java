@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 public class Login extends javax.swing.JFrame {
 
     public static String currentUsername;
+    public static String currentUserType;
     
     /**
      * Creates new form Login
@@ -164,8 +165,8 @@ public class Login extends javax.swing.JFrame {
             String p = String.valueOf(txtpass.getPassword());
             
             Queries q = new Queries();
+            currentUserType = q.getUserType(u);
             q.userLogin(u, p);
-            
             this.dispose();
         }
     }//GEN-LAST:event_buttonLoginActionPerformed
