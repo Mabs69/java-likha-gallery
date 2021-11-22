@@ -52,7 +52,7 @@ public class Queries {
                         JOptionPane.showMessageDialog(null, "Something Went Wrong");
                     }
                 }
-
+                
             } catch (SQLException ex) {
                 System.out.println(ex.getMessage());
                 Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
@@ -226,8 +226,32 @@ public class Queries {
         }
         
     }
+    
+    public byte[] getProfilePicture(int u) {
+        byte[] path = null;
+        Connection con = myConnection.getConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+        
+        try {
+            ps = con.prepareStatement("SELECT `pic` FROM registration WHERE `user_id` = ?");
+            ps.setInt(1, u);
+            
+            rs = ps.executeQuery();
+            
+            if(rs.next()) {
+                path = rs.getBytes("pic");
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+        return path;
+    }
+}
 
-
+    
 
 
 
@@ -278,4 +302,4 @@ public class Queries {
 //        }
 //        return path;
 //    }
-}
+

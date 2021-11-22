@@ -74,6 +74,11 @@ public class artistMainMenu extends javax.swing.JFrame {
         jLabelProfilePic.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 24)); // NOI18N
         jLabelProfilePic.setText("PIC");
         jLabelProfilePic.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelProfilePic.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelProfilePicMouseClicked(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jButton2.setText("My Gallery");
@@ -167,6 +172,7 @@ public class artistMainMenu extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButtonLogoutActionPerformed
 
+<<<<<<< HEAD
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         allArtsView aav = new allArtsView();
         aav.setVisible(true);
@@ -175,6 +181,16 @@ public class artistMainMenu extends javax.swing.JFrame {
         aav.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
+=======
+    private void jLabelProfilePicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelProfilePicMouseClicked
+        ArtistProfile a = new ArtistProfile();
+        this.dispose();
+        this.pack();
+        a.setVisible(true);
+        a.setLocationRelativeTo(null);
+        a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }//GEN-LAST:event_jLabelProfilePicMouseClicked
+>>>>>>> e78af795587f8776a6505b6d774ee83c4e79a437
 
     /**
      * @param args the command line arguments
