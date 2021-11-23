@@ -1,12 +1,9 @@
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -308,17 +305,11 @@ public class Queries {
     
     public ResultSet getMyGallery(int aid) {
         Connection con = myConnection.getConnection();
-        PreparedStatement ps;
         ResultSet rs = null;
         
         try {
-            ps = con.prepareStatement("SELECT * FROM art WHERE artist_id = ?;");
-            ps.setInt(1, aid);
-            
-            rs = ps.executeQuery();
-            
-
-            
+            Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            rs = st.executeQuery("SELECT * FROM art WHERE artist_id = "+aid); 
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println(ex.getMessage());
@@ -351,6 +342,7 @@ public class Queries {
             Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
 }
 
     

@@ -213,19 +213,12 @@ public class artistMainMenu extends javax.swing.JFrame {
         Queries q = new Queries();
         rs1 = q.getMyGallery(Login.currentArtistID);
         try {
-            if(rs1.next()) {
-                JOptionPane.showMessageDialog(null, "You have art bro");
-            }
+            if(rs1.next()) 
+                myGallery();
             else {
                 int c = JOptionPane.showConfirmDialog(null, "You have no Art yet. Add art now?", "Art", JOptionPane.YES_NO_OPTION);
-                if (c == JOptionPane.YES_OPTION) {
-                    addGallery al = new addGallery();
-                    al.setVisible(true);
-                    al.pack();
-                    al.setLocationRelativeTo(null);
-                    al.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                    this.dispose();
-                }
+                if (c == JOptionPane.YES_OPTION) 
+                    addGallery();
             }
         } catch (SQLException ex) {
             Logger.getLogger(artistMainMenu.class.getName()).log(Level.SEVERE, null, ex);
@@ -233,7 +226,24 @@ public class artistMainMenu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnMyGalleryActionPerformed
 
-
+    public void myGallery() {
+        ArtistGalleryView agv = new ArtistGalleryView();
+        agv.setVisible(true);
+        agv.pack();
+        agv.setLocationRelativeTo(null);
+        agv.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }
+    
+    public void addGallery() {
+        addGallery al = new addGallery();
+        al.setVisible(true);
+        al.pack();
+        al.setLocationRelativeTo(null);
+        al.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }
+    
     /**
      * @param args the command line arguments
      */
