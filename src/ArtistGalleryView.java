@@ -18,6 +18,7 @@ import javax.swing.JFrame;
 public class ArtistGalleryView extends javax.swing.JFrame {
 
     ResultSet rsa;
+    byte[] img;
     
     public ArtistGalleryView() {
         initComponents();
@@ -46,6 +47,7 @@ public class ArtistGalleryView extends javax.swing.JFrame {
         btnEdit = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
+        btnAdd = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,14 +82,32 @@ public class ArtistGalleryView extends javax.swing.JFrame {
 
         btnEdit.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnEdit.setText("Edit Art");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
         btnDelete.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnDelete.setText("Delete Art");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
+            }
+        });
+
+        btnAdd.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnAdd.setText("Add Art");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
             }
         });
 
@@ -104,12 +124,13 @@ public class ArtistGalleryView extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(192, 192, 192))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 94, Short.MAX_VALUE)
+                        .addGap(0, 71, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(26, 26, 26)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnAdd)
+                                .addGap(30, 30, 30)
                                 .addComponent(btnEdit)
-                                .addGap(83, 83, 83)
+                                .addGap(26, 26, 26)
                                 .addComponent(btnDelete))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(103, 103, 103))))
@@ -144,11 +165,12 @@ public class ArtistGalleryView extends javax.swing.JFrame {
                 .addComponent(txtName)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEdit)
-                    .addComponent(btnDelete))
-                .addContainerGap(71, Short.MAX_VALUE))
+                    .addComponent(btnDelete)
+                    .addComponent(btnAdd))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         pack();
@@ -171,9 +193,22 @@ public class ArtistGalleryView extends javax.swing.JFrame {
         previousArt();
     }//GEN-LAST:event_btnPreviousActionPerformed
 
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        editArt();
+    }//GEN-LAST:event_btnEditActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        deleteArt();
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        addArt();
+    }//GEN-LAST:event_btnAddActionPerformed
+
     public void nextArt() {
         try {
             if(rsa.next()) {
+                img = rsa.getBytes("art_img");
                 lblPic.setIcon(new uploadFunction().resizePic(null, rsa.getBytes("art_img"), lblPic.getWidth(), lblPic.getHeight()));
                 txtName.setText(rsa.getString("art_name"));
                 txtDesc.setText(rsa.getString("art_desc"));
@@ -187,6 +222,7 @@ public class ArtistGalleryView extends javax.swing.JFrame {
     public void previousArt() {
         try {
             if(rsa.previous()) {
+                img = rsa.getBytes("art_img");
                 lblPic.setIcon(new uploadFunction().resizePic(null, rsa.getBytes("art_img"), lblPic.getWidth(), lblPic.getHeight()));
                 txtName.setText(rsa.getString("art_name"));
                 txtDesc.setText(rsa.getString("art_desc"));
@@ -200,6 +236,36 @@ public class ArtistGalleryView extends javax.swing.JFrame {
     public void getMyGallery() {
         Queries q = new Queries();
         rsa = q.getMyGallery(Login.currentArtistID);
+    }
+    
+    public void editArt() {
+        String n = txtName.getText();
+        String d = txtDesc.getText();
+        
+        editArt e = new editArt(n, d, img);
+        e.setVisible(true);
+        e.pack();
+        e.setLocationRelativeTo(null);
+        e.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }
+    
+    public void deleteArt() {
+        String name = txtName.getText();
+        Queries q = new Queries();
+        q.deleteArt(name, Login.currentArtistID);
+        
+        getMyGallery();
+        nextArt();
+    }
+    
+    public void addArt() {
+        addGallery al = new addGallery();
+        al.setVisible(true);
+        al.pack();
+        al.setLocationRelativeTo(null);
+        al.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
     }
     /**
      * @param args the command line arguments
@@ -237,6 +303,7 @@ public class ArtistGalleryView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEdit;

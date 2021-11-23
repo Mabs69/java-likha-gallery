@@ -175,6 +175,7 @@ public class addGallery extends javax.swing.JFrame {
                 byte[] img = Files.readAllBytes(Paths.get(imagePath));
                 
                 q.addGallery(n, d, img, Login.currentArtistID);
+                this.dispose();
             } catch (IOException ex) {
                 Logger.getLogger(addGallery.class.getName()).log(Level.SEVERE, null, ex);
             }

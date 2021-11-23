@@ -320,7 +320,6 @@ public class Queries {
     public void addGallery(String n, String d, byte[] img, int aid) {
         Connection con = myConnection.getConnection();
         PreparedStatement ps;
-        ResultSet rs;
         
         try {
             ps = con.prepareStatement("INSERT INTO art (artist_id, art_name, art_desc, art_img) VALUES (?,?,?,?)");
@@ -343,6 +342,58 @@ public class Queries {
         }
     }
     
+    public void editArt1(String n, String d, byte[] i, int aid, String cn) {
+        Connection con = myConnection.getConnection();
+        PreparedStatement ps;
+        
+        try {
+            ps = con.prepareStatement("UPDATE art SET art_name = ?, art_desc = ?, art_img = ? WHERE artist_id = ? and art_name = ?");
+            ps.setString(1, n);
+            ps.setString(2, d);
+            ps.setBytes(3, i);
+            ps.setInt(4, aid);
+            ps.setString(5, cn);
+            
+            if(ps.executeUpdate() != 0) 
+                JOptionPane.showMessageDialog(null, "Art Name: "+cn+" Successfully Updated");          
+        } catch (SQLException ex) {
+            Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void editArt2 (String n, String d, int aid, String cn) {
+        Connection con = myConnection.getConnection();
+        PreparedStatement ps;
+        
+        try {
+            ps = con.prepareStatement("UPDATE art SET art_name = ?, art_desc = ? WHERE artist_id = ? and art_name = ?");
+            ps.setString(1, n);
+            ps.setString(2, d);
+            ps.setInt(3, aid);
+            ps.setString(4, cn);
+            
+            if(ps.executeUpdate() != 0) 
+                JOptionPane.showMessageDialog(null, "Art Name: "+cn+" Successfully Updated");          
+        } catch (SQLException ex) {
+            Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void deleteArt(String n, int aid) {
+        Connection con = myConnection.getConnection();
+        PreparedStatement ps;
+        
+        try {
+            ps = con.prepareStatement("DELETE FROM art WHERE art_name = ? and artist_id = ?");
+            ps.setString(1, n);
+            ps.setInt(2, aid);
+            
+            if(ps.executeUpdate() != 0)
+                JOptionPane.showMessageDialog(null, "Art: "+n+" is deleted");               
+        } catch (SQLException ex) {
+            Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
 
     
