@@ -81,6 +81,9 @@ public class Queries {
                 ps1.setString(2, "artist");
                 rs1 = ps1.executeQuery();
                 
+                Login.currentUserID = getCurrentUserID(u);
+                Login.currentArtistID = getCurrentArtistID(Login.currentUserID);
+
                 if (rs1.next()){
                     artistMainMenu a = new artistMainMenu();
                     a.setVisible(true);
@@ -167,7 +170,30 @@ public class Queries {
             rs = ps.executeQuery();
             
             if(rs.next()) {
-                u = rs.getInt("user_id");
+                u = rs.getInt(1);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return u;
+    }
+    
+    public int getCurrentArtistID(int uid) {
+        int u = 0;
+        Connection con = myConnection.getConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+        
+        try {
+            ps = con.prepareStatement("SELECT artist_id FROM artist WHERE user_id = ?");
+            ps.setInt(1, uid);
+            
+            rs = ps.executeQuery();
+            
+            if(rs.next()) {
+                u = rs.getInt(1);
             }
             
         } catch (SQLException ex) {
@@ -279,6 +305,27 @@ public class Queries {
         }
         return path;
     }
+    
+//    public ResultSet getMyGallery() {
+//        Connection con = myConnection.getConnection();
+//        PreparedStatement ps;
+//        ResultSet rs;
+//        
+//        try {
+//            ps = con.prepareStatement("SELECT * FROM art WHERE artist_id = ?;");
+//            ps.setInt(1, u);
+//            
+//            rs = ps.executeQuery();
+//            
+//            if(rs.next()) {
+//                path = rs.getBytes("pic");
+//            }
+//            
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+//            System.out.println(ex.getMessage());
+//        }
+//    }
 }
 
     
