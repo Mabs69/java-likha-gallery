@@ -15,6 +15,8 @@ public class Login extends javax.swing.JFrame {
 
     public static String currentUsername;
     public static String currentUserType;
+    public static int currentUserID;
+    public static int currentArtistID;
     
     /**
      * Creates new form Login
