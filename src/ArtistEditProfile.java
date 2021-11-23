@@ -31,6 +31,7 @@ public class ArtistEditProfile extends javax.swing.JFrame {
     PreparedStatement ps;
     ResultSet rs;
     String imagePath = null;
+    
     public ArtistEditProfile() {
         initComponents();
         
@@ -195,35 +196,49 @@ public class ArtistEditProfile extends javax.swing.JFrame {
         imagePath = uf.browseImage(jLabelpic);
     }//GEN-LAST:event_jButtonUploadActionPerformed
 
+    
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
 
         if (!isFieldsAreEmpty()){
             
-            try {
-                if (newSelectedPicture()){
-                    Path p = Paths.get(imagePath);
-                    byte[] img = Files.readAllBytes(p);
-                    ps = con.prepareStatement("UPDATE registration SET fname = ?, lname = ?, pic = ? WHERE username = ?");
-                    ps.setString(1, jTextFieldfname.getText());
-                    ps.setString(2, jTextFieldlname.getText());
-                    ps.setBytes(3, img);
-                    ps.setString(4, Login.currentUsername);
-                } else {
-                    ps = con.prepareStatement("UPDATE registration SET fname = ?, lname = ? WHERE username = ?");
-                    ps.setString(1, jTextFieldfname.getText());
-                    ps.setString(2, jTextFieldlname.getText());
-                    ps.setString(3, Login.currentUsername);
-                }
-                ps.executeUpdate();
+            if (!isDescContactEmpty()) {
                 
-            } catch (SQLException | IOException ex) {
-                    Logger.getLogger(ArtistEditProfile.class.getName()).log(Level.SEVERE, null, ex);
+                try {
+                    if (newSelectedPicture()){
+                        Path p = Paths.get(imagePath);
+                        byte[] img = Files.readAllBytes(p);
+                        ps = con.prepareStatement("UPDATE registration SET fname = ?, lname = ?, pic = ? WHERE username = ?");
+                        ps.setString(1, jTextFieldfname.getText());
+                        ps.setString(2, jTextFieldlname.getText());
+                        ps.setBytes(3, img);
+                        ps.setString(4, Login.currentUsername);
+                    } else {
+                        ps = con.prepareStatement("UPDATE registration SET fname = ?, lname = ? WHERE username = ?");
+                        ps.setString(1, jTextFieldfname.getText());
+                        ps.setString(2, jTextFieldlname.getText());
+                        ps.setString(3, Login.currentUsername);
+                    }
+                    ps.executeUpdate();
+
+                } catch (SQLException | IOException ex) {
+                        Logger.getLogger(ArtistEditProfile.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                
+            } else {
+                JOptionPane.showMessageDialog(null, "You must update your description and contact details.");
             }
+            
         } else {
             JOptionPane.showMessageDialog(null, "One or more Fields are empty");
         }
     }//GEN-LAST:event_btnSaveActionPerformed
-
+    
+    private boolean isDescContactEmpty(){
+        
+        return jTextFielddesc.getText().isEmpty() || jTextFieldcd.getText().isEmpty();
+        
+    }
+    
     private boolean newSelectedPicture() {
         boolean p = true;
         
@@ -238,8 +253,7 @@ public class ArtistEditProfile extends javax.swing.JFrame {
     private boolean isFieldsAreEmpty() {
         boolean f = true;
         
-        if (jTextFieldfname.getText().isEmpty() || jTextFieldlname.getText().isEmpty()
-                || jTextFielddesc.getText().isEmpty() || jTextFieldcd.getText().isEmpty())
+        if (jTextFieldfname.getText().isEmpty() || jTextFieldlname.getText().isEmpty())
             f = true;
         else
             f = false;
