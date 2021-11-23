@@ -107,7 +107,7 @@ public class userMainMenu extends javax.swing.JFrame {
 
         jLabelUsername.setText("jLabel1");
         getContentPane().add(jLabelUsername);
-        jLabelUsername.setBounds(480, 30, 60, 14);
+        jLabelUsername.setBounds(480, 30, 60, 16);
 
         jButtonLogout.setText("Logout");
         jButtonLogout.addActionListener(new java.awt.event.ActionListener() {
@@ -116,7 +116,7 @@ public class userMainMenu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButtonLogout);
-        jButtonLogout.setBounds(10, 10, 70, 23);
+        jButtonLogout.setBounds(10, 10, 70, 25);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
