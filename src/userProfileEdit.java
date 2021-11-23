@@ -22,11 +22,11 @@ import javax.swing.JOptionPane;
  *
  * @author Francis
  */
-public class userProfile extends javax.swing.JFrame {
+public class userProfileEdit extends javax.swing.JFrame {
 
     String imagePath = null;
     
-    public userProfile() {
+    public userProfileEdit() {
         initComponents();
         this.setLocationRelativeTo(null);
         
@@ -46,11 +46,11 @@ public class userProfile extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnCancel = new javax.swing.JButton();
         jTextFieldLName = new javax.swing.JTextField();
         jTextFieldFName = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
-        jButtonSave = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
         jButtonUpload = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -66,11 +66,11 @@ public class userProfile extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
         jLabel4.setText("Last Name:");
 
-        jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton1.setText("Cancel");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCancel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnCancel.setText("Cancel");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCancelActionPerformed(evt);
             }
         });
 
@@ -85,11 +85,11 @@ public class userProfile extends javax.swing.JFrame {
             }
         });
 
-        jButtonSave.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jButtonSave.setText("SAVE");
-        jButtonSave.addActionListener(new java.awt.event.ActionListener() {
+        btnSave.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        btnSave.setText("SAVE");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSaveActionPerformed(evt);
+                btnSaveActionPerformed(evt);
             }
         });
 
@@ -124,10 +124,10 @@ public class userProfile extends javax.swing.JFrame {
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(210, 210, 210)
-                        .addComponent(jButtonSave, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(240, 240, 240)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(210, 210, 210)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -155,9 +155,9 @@ public class userProfile extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addComponent(jButton2)
                 .addGap(45, 45, 45)
-                .addComponent(jButtonSave, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
@@ -169,7 +169,7 @@ public class userProfile extends javax.swing.JFrame {
         imagePath = uf.browseImage(jLabelProfilePic);
     }//GEN-LAST:event_jButtonUploadActionPerformed
 
-    private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         if(verifData()) {
             try {
                 Queries q = new Queries();
@@ -185,22 +185,23 @@ public class userProfile extends javax.swing.JFrame {
                 else {
                     q.updateUserProfile2(f, l, Login.currentUsername);
                 }
+                back();
                 
             } catch (IOException ex) {
-                Logger.getLogger(userProfile.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(userProfileEdit.class.getName()).log(Level.SEVERE, null, ex);
                 System.out.println(ex.getMessage());
             }
         }
-    }//GEN-LAST:event_jButtonSaveActionPerformed
+    }//GEN-LAST:event_btnSaveActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        userMainMenu umm = new userMainMenu();
-        umm.setVisible(true);
-        umm.pack();
-        umm.setLocationRelativeTo(null);
-        umm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        userProfileView up = new userProfileView();
+        up.setVisible(true);
+        up.pack();
+        up.setLocationRelativeTo(null);
+        up.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnCancelActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         changePassword cp = new changePassword();
@@ -218,6 +219,15 @@ public class userProfile extends javax.swing.JFrame {
         }
         else
             return true;
+    }
+    
+    private void back() {
+        userProfileView up = new userProfileView();
+        up.setVisible(true);
+        up.pack();
+        up.setLocationRelativeTo(null);
+        up.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
     }
     
     private void displayData() {
@@ -259,28 +269,29 @@ public class userProfile extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(userProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(userProfileEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(userProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(userProfileEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(userProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(userProfileEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(userProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(userProfileEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new userProfile().setVisible(true);
+                new userProfileEdit().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnCancel;
+    private javax.swing.JButton btnSave;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButtonSave;
     private javax.swing.JButton jButtonUpload;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

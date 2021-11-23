@@ -1,3 +1,12 @@
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -16,6 +25,8 @@ public class ArtistProfile extends javax.swing.JFrame {
     public ArtistProfile() {
         initComponents();
         this.setLocationRelativeTo(null);
+        
+        displayProfile();
     }
 
     /**
@@ -27,37 +38,214 @@ public class ArtistProfile extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabelpic = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabelfname = new javax.swing.JLabel();
+        jLabellname = new javax.swing.JLabel();
+        jLabeldesc = new javax.swing.JLabel();
+        jLabelcd = new javax.swing.JLabel();
+        btn_edit = new javax.swing.JButton();
+        btn_back = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jLabelid = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setPreferredSize(new java.awt.Dimension(500, 500));
-        jPanel1.setLayout(null);
+        jLabel2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 24)); // NOI18N
+        jLabel2.setText("Artist Profile");
 
-        jLabel1.setText("jLabel1");
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(130, 150, 34, 20);
+        jLabel3.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
+        jLabel3.setText("First Name:");
 
-        jLabel2.setText("jLabel2");
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(140, 170, 34, 15);
+        jLabel4.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
+        jLabel4.setText("Last Name:");
+
+        jLabel5.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
+        jLabel5.setText("Artist Description:");
+
+        jLabel6.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
+        jLabel6.setText("Artist Contact Details:");
+
+        jLabelfname.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
+        jLabelfname.setText("text");
+
+        jLabellname.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
+        jLabellname.setText("text");
+
+        jLabeldesc.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
+        jLabeldesc.setText("text");
+
+        jLabelcd.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
+        jLabelcd.setText("text");
+
+        btn_edit.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        btn_edit.setText("EDIT");
+        btn_edit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_editActionPerformed(evt);
+            }
+        });
+
+        btn_back.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btn_back.setText("Back");
+        btn_back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_backActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
+        jLabel7.setText("Artist ID:");
+
+        jLabelid.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
+        jLabelid.setText("text");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 914, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(179, 179, 179)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(188, 188, 188)
+                        .addComponent(jLabelpic, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(100, 100, 100)
+                        .addComponent(jLabelid, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(100, 100, 100)
+                        .addComponent(jLabelfname, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(100, 100, 100)
+                        .addComponent(jLabellname, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(jLabel5)
+                        .addGap(59, 59, 59)
+                        .addComponent(jLabeldesc, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(jLabel6)
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabelcd, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(29, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btn_edit, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(181, 181, 181))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btn_back)
+                        .addGap(208, 208, 208))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 486, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelpic, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelid, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelfname, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabellname, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabeldesc, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelcd, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addComponent(btn_edit)
+                .addGap(18, 18, 18)
+                .addComponent(btn_back)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btn_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editActionPerformed
+        ArtistEditProfile a = new ArtistEditProfile();
+        this.dispose();
+        a.pack();
+        a.setLocationRelativeTo(null);
+        a.setVisible(true);
+        a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        
+    }//GEN-LAST:event_btn_editActionPerformed
+
+    private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
+        artistMainMenu amm = new artistMainMenu();
+        amm.setVisible(true);
+        amm.pack();
+        amm.setLocationRelativeTo(null);
+        amm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_btn_backActionPerformed
+
+    private void displayProfile(){
+        Connection con = myConnection.getConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+        
+        try {
+            ps = con.prepareStatement("SELECT * FROM registration WHERE username = ?");
+            ps.setString(1, Login.currentUsername);
+            rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                jLabelfname.setText(rs.getString("fname"));
+                jLabellname.setText(rs.getString("lname"));
+                jLabelpic.setIcon(new uploadFunction().resizePic(null, rs.getBytes("pic"), jLabelpic.getWidth(), jLabelpic.getHeight()));
+                
+                ps = con.prepareStatement("SELECT a.artist_id, a.artist_desc, a.artist_cd FROM artist a, registration r WHERE r.username = ? AND a.user_id = r.user_id;");
+                ps.setString(1, Login.currentUsername);
+                rs = ps.executeQuery();
+                
+                if (rs.next()) {
+                    jLabelid.setText(rs.getString("a.artist_id"));
+                    
+                    if (rs.getString("a.artist_desc") == null && rs.getString("a.artist_cd") == null) {
+                        jLabeldesc.setText("NO DESCRIPTION YET");
+                        jLabelcd.setText("NO CONTACT DETAILS YET");
+                    } else {
+                        jLabeldesc.setText(rs.getString("a.artist_desc"));
+                        jLabelcd.setText(rs.getString("a.artist_cd"));
+                    }
+                }
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ArtistProfile.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -94,8 +282,19 @@ public class ArtistProfile extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btn_back;
+    private javax.swing.JButton btn_edit;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabelcd;
+    private javax.swing.JLabel jLabeldesc;
+    private javax.swing.JLabel jLabelfname;
+    private javax.swing.JLabel jLabelid;
+    private javax.swing.JLabel jLabellname;
+    private javax.swing.JLabel jLabelpic;
     // End of variables declaration//GEN-END:variables
 }

@@ -52,7 +52,7 @@ public class Queries {
                         JOptionPane.showMessageDialog(null, "Something Went Wrong");
                     }
                 }
-
+                
             } catch (SQLException ex) {
                 System.out.println(ex.getMessage());
                 Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
@@ -122,6 +122,29 @@ public class Queries {
         }
         return uExist;
     
+    }
+    
+    public String getUserType(String un) {
+        String t = null;
+        Connection con = myConnection.getConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+        
+        try {
+            ps = con.prepareStatement("SELECT `user_type` FROM registration WHERE `username` = ?");
+            ps.setString(1, un);
+            
+            rs = ps.executeQuery();
+            
+            if(rs.next()) {
+                t = rs.getString("user_type");
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return t;
     }
     
     public int getCurrentUserID(String un) {
@@ -250,3 +273,56 @@ public class Queries {
         return path;
     }
 }
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    RECYCLE BIN
+//    public byte[] getProfilePicture(int u) {
+//        byte[] path = null;
+//        Connection con = myConnection.getConnection();
+//        PreparedStatement ps;
+//        ResultSet rs;
+//        
+//        try {
+//            ps = con.prepareStatement("SELECT `pic` FROM registration WHERE `user_id` = ?");
+//            ps.setInt(1, u);
+//            
+//            rs = ps.executeQuery();
+//            
+//            if(rs.next()) {
+//                path = rs.getBytes("pic");
+//            }
+//            
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+//            System.out.println(ex.getMessage());
+//        }
+//        return path;
+//    }
+

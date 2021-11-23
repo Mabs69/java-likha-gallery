@@ -60,7 +60,7 @@ public class userMainMenu extends javax.swing.JFrame {
 
         jLabelProfilePic = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnGallery = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabelUsername = new javax.swing.JLabel();
         jButtonLogout = new javax.swing.JButton();
@@ -85,10 +85,15 @@ public class userMainMenu extends javax.swing.JFrame {
         getContentPane().add(jButton1);
         jButton1.setBounds(340, 158, 270, 110);
 
-        jButton2.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
-        jButton2.setText("Gallery");
-        getContentPane().add(jButton2);
-        jButton2.setBounds(20, 160, 270, 110);
+        btnGallery.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        btnGallery.setText("Gallery");
+        btnGallery.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGalleryActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnGallery);
+        btnGallery.setBounds(20, 160, 270, 110);
 
         jLabel2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 24)); // NOI18N
         jLabel2.setText("Main Menu (User)");
@@ -122,12 +127,22 @@ public class userMainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonLogoutActionPerformed
 
     private void jLabelProfilePicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelProfilePicMouseClicked
-        userProfile up = new userProfile();
+        userProfileView up = new userProfileView();
         up.setVisible(true);
         up.pack();
         up.setLocationRelativeTo(null);
         up.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
     }//GEN-LAST:event_jLabelProfilePicMouseClicked
+
+    private void btnGalleryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGalleryActionPerformed
+        allArtsView aav = new allArtsView();
+        aav.setVisible(true);
+        aav.pack();
+        aav.setLocationRelativeTo(null);
+        aav.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_btnGalleryActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,8 +180,8 @@ public class userMainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGallery;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonLogout;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelProfilePic;

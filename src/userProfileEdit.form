@@ -47,11 +47,11 @@
                   </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace min="210" pref="210" max="-2" attributes="0"/>
-                      <Component id="jButtonSave" min="-2" pref="140" max="-2" attributes="0"/>
+                      <Component id="btnSave" min="-2" pref="140" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace min="240" pref="240" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" pref="90" max="-2" attributes="0"/>
+                      <Component id="btnCancel" min="-2" pref="90" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="210" pref="210" max="-2" attributes="0"/>
@@ -87,9 +87,9 @@
               <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
               <Component id="jButton2" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="45" pref="45" max="-2" attributes="0"/>
-              <Component id="jButtonSave" min="-2" pref="30" max="-2" attributes="0"/>
+              <Component id="btnSave" min="-2" pref="30" max="-2" attributes="0"/>
               <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" pref="30" max="-2" attributes="0"/>
+              <Component id="btnCancel" min="-2" pref="30" max="-2" attributes="0"/>
               <EmptySpace pref="28" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -127,7 +127,7 @@
         <Property name="text" type="java.lang.String" value="Last Name:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btnCancel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dialog" size="14" style="1"/>
@@ -135,7 +135,7 @@
         <Property name="text" type="java.lang.String" value="Cancel"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldLName">
@@ -160,7 +160,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButtonSave">
+    <Component class="javax.swing.JButton" name="btnSave">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dialog" size="24" style="1"/>
@@ -168,7 +168,7 @@
         <Property name="text" type="java.lang.String" value="SAVE"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSaveActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSaveActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonUpload">
