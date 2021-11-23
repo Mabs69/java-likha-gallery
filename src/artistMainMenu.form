@@ -61,7 +61,7 @@
                   <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                   <Component id="jButton4" min="-2" pref="161" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                  <Component id="jButton3" min="-2" pref="187" max="-2" attributes="0"/>
+                  <Component id="btnArtists" min="-2" pref="187" max="-2" attributes="0"/>
                   <EmptySpace pref="61" max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
@@ -84,7 +84,7 @@
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="41" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButton3" alignment="3" min="-2" pref="94" max="-2" attributes="0"/>
+                      <Component id="btnArtists" alignment="3" min="-2" pref="94" max="-2" attributes="0"/>
                       <Component id="jButton4" alignment="3" min="-2" pref="91" max="-2" attributes="0"/>
                       <Component id="jButton2" alignment="3" min="-2" pref="94" max="-2" attributes="0"/>
                   </Group>
@@ -124,13 +124,16 @@
             <Property name="text" type="java.lang.String" value="My Gallery"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton3">
+        <Component class="javax.swing.JButton" name="btnArtists">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Verdana" size="24" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Artists"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnArtistsActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton4">
           <Properties>

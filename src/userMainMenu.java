@@ -59,7 +59,7 @@ public class userMainMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabelProfilePic = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnArtists = new javax.swing.JButton();
         btnGallery = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabelUsername = new javax.swing.JLabel();
@@ -80,10 +80,15 @@ public class userMainMenu extends javax.swing.JFrame {
         getContentPane().add(jLabelProfilePic);
         jLabelProfilePic.setBounds(560, 10, 60, 50);
 
-        jButton1.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
-        jButton1.setText("Artists");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(340, 158, 270, 110);
+        btnArtists.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        btnArtists.setText("Artists");
+        btnArtists.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnArtistsActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnArtists);
+        btnArtists.setBounds(340, 158, 270, 110);
 
         btnGallery.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         btnGallery.setText("Gallery");
@@ -144,6 +149,15 @@ public class userMainMenu extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnGalleryActionPerformed
 
+    private void btnArtistsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArtistsActionPerformed
+       artistList al = new artistList();
+       al.setVisible(true);
+       al.pack();
+       al.setLocationRelativeTo(null);
+       al.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       this.dispose();
+    }//GEN-LAST:event_btnArtistsActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -180,8 +194,8 @@ public class userMainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnArtists;
     private javax.swing.JButton btnGallery;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonLogout;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelProfilePic;

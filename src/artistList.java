@@ -1,3 +1,12 @@
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,11 +19,14 @@
  */
 public class artistList extends javax.swing.JFrame {
 
-    /**
-     * Creates new form artistList
-     */
+    ResultSet rs;
+    
     public artistList() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        
+        getArtists();
+        nextArtist();
     }
 
     /**
@@ -26,22 +38,198 @@ public class artistList extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        lblPic = new javax.swing.JLabel();
+        txtName = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtDesc = new javax.swing.JTextArea();
+        txtCD = new javax.swing.JLabel();
+        btnNext = new javax.swing.JButton();
+        btnPrev = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 24)); // NOI18N
+        jLabel1.setText("Artists");
+
+        txtName.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 18)); // NOI18N
+        txtName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtName.setText("Name");
+
+        txtDesc.setEditable(false);
+        txtDesc.setColumns(20);
+        txtDesc.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
+        txtDesc.setRows(5);
+        jScrollPane1.setViewportView(txtDesc);
+
+        txtCD.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 18)); // NOI18N
+        txtCD.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtCD.setText("Contact");
+
+        btnNext.setText("NEXT");
+        btnNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNextActionPerformed(evt);
+            }
+        });
+
+        btnPrev.setText("PREVIOUS");
+        btnPrev.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrevActionPerformed(evt);
+            }
+        });
+
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnBack)
+                        .addGap(227, 227, 227)
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(btnPrev)
+                        .addGap(88, 88, 88)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCD, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblPic, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                                .addComponent(btnNext)))))
+                .addGap(53, 53, 53))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(191, 191, 191)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnBack)
+                        .addGap(5, 5, 5))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(119, 119, 119)
+                                .addComponent(btnNext))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(121, 121, 121)
+                                .addComponent(btnPrev)))
+                        .addGap(102, 102, 102))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblPic, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
+                .addComponent(txtName)
+                .addGap(18, 18, 18)
+                .addComponent(txtCD)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(100, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        nextArtist();
+    }//GEN-LAST:event_btnNextActionPerformed
+
+    private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
+        previousArtist();
+    }//GEN-LAST:event_btnPrevActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        if(Login.currentUserType.equals("artist")) {        
+            artistMainMenu amm = new artistMainMenu();
+            amm.setVisible(true);
+            amm.pack();
+            amm.setLocationRelativeTo(null);
+            amm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            this.dispose();
+        }
+        else {
+            userMainMenu umm = new userMainMenu();
+            umm.setVisible(true);
+            umm.pack();
+            umm.setLocationRelativeTo(null);
+            umm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            this.dispose();
+        }
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    public void getArtists() {
+        Connection con = myConnection.getConnection(); 
+        try {
+            Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            rs = st.executeQuery("SELECT registration.pic, registration.fname, registration.lname, artist.artist_cd, artist.artist_desc FROM registration, artist WHERE artist.user_id = registration.user_id");
+     
+        } catch (SQLException ex) {
+            Logger.getLogger(allArtsView.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public void nextArtist() {
+        try {
+            if(rs.next()) {
+                lblPic.setIcon(new uploadFunction().resizePic(null, rs.getBytes(1), lblPic.getWidth(), lblPic.getHeight()));
+                txtName.setText(rs.getString(2) + " " + rs.getString(3));
+                if(rs.getString(4) == null)
+                    txtCD.setText("*No Contact Details");
+                else
+                    txtCD.setText(rs.getString(4));
+                if(rs.getString(5) == null)
+                    txtDesc.setText("*No Description Details");
+                else
+                    txtDesc.setText(rs.getString(5));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(allArtsView.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public void previousArtist() {
+        try {
+            if(rs.previous()) {
+                lblPic.setIcon(new uploadFunction().resizePic(null, rs.getBytes(1), lblPic.getWidth(), lblPic.getHeight()));
+                txtName.setText(rs.getString(2) + " " + rs.getString(3));
+                if(rs.getString(4) == null)
+                    txtCD.setText("*No Contact Details");
+                else
+                    txtCD.setText(rs.getString(4));
+                if(rs.getString(5) == null)
+                    txtDesc.setText("*No Description Details");
+                else
+                    txtDesc.setText(rs.getString(5));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(allArtsView.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -78,5 +266,14 @@ public class artistList extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnNext;
+    private javax.swing.JButton btnPrev;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblPic;
+    private javax.swing.JLabel txtCD;
+    private javax.swing.JTextArea txtDesc;
+    private javax.swing.JLabel txtName;
     // End of variables declaration//GEN-END:variables
 }
