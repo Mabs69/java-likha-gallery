@@ -59,13 +59,15 @@ public class Queries {
             }
     }
     
-    public void userLogin(String u, String p) {
+    public boolean userLogin(String u, String p) {
         Connection con = myConnection.getConnection();
         PreparedStatement ps;
         ResultSet rs;
         
         PreparedStatement ps1;
         ResultSet rs1;
+        
+        boolean user = false;
         
         try {
             ps = con.prepareStatement("SELECT `username`, `password` FROM `registration` WHERE `username` = ? AND `password` = ?");
@@ -85,19 +87,24 @@ public class Queries {
                     a.pack();
                     a.setLocationRelativeTo(null);
                     a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    user = true;
                 } else { 
                     userMainMenu mm = new userMainMenu();
                     mm.setVisible(true);
                     mm.pack();
                     mm.setLocationRelativeTo(null);
                     mm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    user = true;
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Invalid credentials.");
+                user = false;
             }
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        return user;
     }
     
     public boolean isUsernameExist(String un) {

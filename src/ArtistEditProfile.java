@@ -1,5 +1,16 @@
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -16,10 +27,14 @@ public class ArtistEditProfile extends javax.swing.JFrame {
     /**
      * Creates new form ArtistEditProfile
      */
-    
+    Connection con = myConnection.getConnection();
+    PreparedStatement ps;
+    ResultSet rs;
     String imagePath = null;
     public ArtistEditProfile() {
         initComponents();
+        
+        displayArtist();
     }
 
     /**
@@ -181,9 +196,83 @@ public class ArtistEditProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonUploadActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        
+
+        if (!isFieldsAreEmpty()){
+            
+            try {
+                if (newSelectedPicture()){
+                    Path p = Paths.get(imagePath);
+                    byte[] img = Files.readAllBytes(p);
+                    ps = con.prepareStatement("UPDATE registration SET fname = ?, lname = ?, pic = ? WHERE username = ?");
+                    ps.setString(1, jTextFieldfname.getText());
+                    ps.setString(2, jTextFieldlname.getText());
+                    ps.setBytes(3, img);
+                    ps.setString(4, Login.currentUsername);
+                } else {
+                    ps = con.prepareStatement("UPDATE registration SET fname = ?, lname = ? WHERE username = ?");
+                    ps.setString(1, jTextFieldfname.getText());
+                    ps.setString(2, jTextFieldlname.getText());
+                    ps.setString(3, Login.currentUsername);
+                }
+                ps.executeUpdate();
+                
+            } catch (SQLException | IOException ex) {
+                    Logger.getLogger(ArtistEditProfile.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "One or more Fields are empty");
+        }
     }//GEN-LAST:event_btnSaveActionPerformed
 
+    private boolean newSelectedPicture() {
+        boolean p = true;
+        
+        if (imagePath != null)
+            p = true;
+        else 
+            p = false;
+        
+        return p;
+    }
+    
+    private boolean isFieldsAreEmpty() {
+        boolean f = true;
+        
+        if (jTextFieldfname.getText().isEmpty() || jTextFieldlname.getText().isEmpty()
+                || jTextFielddesc.getText().isEmpty() || jTextFieldcd.getText().isEmpty())
+            f = true;
+        else
+            f = false;
+        
+        return f;
+    }
+    
+    private void displayArtist(){
+        try {
+            ps = con.prepareStatement("SELECT r.fname, r.lname, a.artist_desc, a.artist_cd FROM registration r, artist a WHERE r.username = ?");
+            ps.setString(1, Login.currentUsername);
+            rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                jTextFieldfname.setText(rs.getString("r.fname"));
+                jTextFieldlname.setText(rs.getString("r.lname"));
+                
+                if (rs.getString("a.artist_desc") == null || rs.getString("a.artist_cd") == null) {
+                    jTextFielddesc.setText("");
+                    jTextFieldcd.setText("");
+                } else {
+                    jTextFielddesc.setText(rs.getString("a.artist_desc"));
+                    jTextFieldcd.setText(rs.getString("a.artist_cd"));
+                }
+            } else {
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ArtistEditProfile.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         ArtistProfile ap = new ArtistProfile();
         ap.setVisible(true);
