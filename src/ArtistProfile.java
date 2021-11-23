@@ -206,6 +206,7 @@ public class ArtistProfile extends javax.swing.JFrame {
         amm.pack();
         amm.setLocationRelativeTo(null);
         amm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
     }//GEN-LAST:event_btn_backActionPerformed
 
     private void displayProfile(){
