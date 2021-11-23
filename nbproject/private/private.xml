@@ -3,7 +3,44 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Java%20Likha%20Gallery/src/LoginRegister.java</file>
+=======
+<<<<<<< HEAD
+            <file>file:/C:/Users/Francis/Documents/NetBeansProjects/FinalOutput/java-likha-gallery/src/allArtsView.java</file>
+            <file>file:/C:/Users/Francis/Documents/NetBeansProjects/FinalOutput/java-likha-gallery/src/Queries.java</file>
+            <file>file:/C:/Users/Francis/Documents/NetBeansProjects/FinalOutput/java-likha-gallery/src/artistList.java</file>
+=======
+<<<<<<< HEAD
+            <file>file:/C:/Users/carlo/Documents/NetBeansProjects/Likhain/java-likha-gallery/src/Queries.java</file>
+            <file>file:/C:/Users/carlo/Documents/NetBeansProjects/Likhain/java-likha-gallery/src/Register.java</file>
+            <file>file:/C:/Users/carlo/Documents/NetBeansProjects/Likhain/java-likha-gallery/src/Login.java</file>
+            <file>file:/C:/Users/carlo/Documents/NetBeansProjects/Likhain/java-likha-gallery/src/artistMainMenu.java</file>
+            <file>file:/C:/Users/carlo/Documents/NetBeansProjects/Likhain/java-likha-gallery/src/LoginRegister.java</file>
+            <file>file:/C:/Users/carlo/Documents/NetBeansProjects/Likhain/java-likha-gallery/src/userMainMenu.java</file>
+=======
+<<<<<<< HEAD
+            <file>file:/C:/Users/Keans%20Erol%20Austria/Desktop/Java-Likha-Gallery/java-likha-gallery/src/Login.java</file>
+=======
+<<<<<<< HEAD
+            <file>file:/C:/Users/Francis/Documents/NetBeansProjects/FinalOutput/java-likha-gallery/src/artistMainMenu.java</file>
+            <file>file:/C:/Users/Francis/Documents/NetBeansProjects/FinalOutput/java-likha-gallery/src/LoginRegister.java</file>
+            <file>file:/C:/Users/Francis/Documents/NetBeansProjects/FinalOutput/java-likha-gallery/src/userProfileEdit.java</file>
+            <file>file:/C:/Users/Francis/Documents/NetBeansProjects/FinalOutput/java-likha-gallery/src/Queries.java</file>
+            <file>file:/C:/Users/Francis/Documents/NetBeansProjects/FinalOutput/java-likha-gallery/src/userProfileView.java</file>
+            <file>file:/C:/Users/Francis/Documents/NetBeansProjects/FinalOutput/java-likha-gallery/src/uploadFunction.java</file>
+            <file>file:/C:/Users/Francis/Documents/NetBeansProjects/FinalOutput/java-likha-gallery/src/Register.java</file>
+            <file>file:/C:/Users/Francis/Documents/NetBeansProjects/FinalOutput/java-likha-gallery/src/Login.java</file>
+            <file>file:/C:/Users/Francis/Documents/NetBeansProjects/FinalOutput/java-likha-gallery/src/userMainMenu.java</file>
+=======
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Java%20Likha%20Gallery/src/Queries.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Java%20Likha%20Gallery/src/ArtistProfile.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Java%20Likha%20Gallery/src/ArtistEditProfile.java</file>
+>>>>>>> e78af795587f8776a6505b6d774ee83c4e79a437
+>>>>>>> c58ccd79d7981f80349857c45f5d4120c0fce32d
+>>>>>>> aedf249d79fcaed1367ec555e90cb2c1620cd76c
+>>>>>>> 6e77d04929f0279865df8d42e389120fd96945ef
+>>>>>>> 8f22775ee1cd035c57f55027b38b45dd7c2ed9cf
         </group>
     </open-files>
 </project-private>

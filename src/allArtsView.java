@@ -28,7 +28,7 @@ public class allArtsView extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
 
         getArt();
-        displayArt();   
+        nextArt();   
     }
 
     /**
@@ -137,29 +137,11 @@ public class allArtsView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-        try {
-            if(rsA.next()) {
-                lblPic.setIcon(new uploadFunction().resizePic(null, rsA.getBytes("art_img"), lblPic.getWidth(), lblPic.getHeight()));
-                lblName.setText(rsA.getString("art_name"));
-                lblDesc.setText(rsA.getString("art_desc"));           
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(allArtsView.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println(ex.getMessage());
-        }
+        nextArt();
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
-        try {            
-            if(rsA.previous()) {
-                lblPic.setIcon(new uploadFunction().resizePic(null, rsA.getBytes("art_img"), lblPic.getWidth(), lblPic.getHeight()));
-                lblName.setText(rsA.getString("art_name"));
-                lblDesc.setText(rsA.getString("art_desc"));              
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(allArtsView.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println(ex.getMessage());
-        }
+        previousArt();
     }//GEN-LAST:event_btnPrevActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -181,12 +163,25 @@ public class allArtsView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnBackActionPerformed
     
-    private void displayArt() {
+    private void nextArt() {
         try {
             if(rsA.next()) {
                 lblPic.setIcon(new uploadFunction().resizePic(null, rsA.getBytes("art_img"), lblPic.getWidth(), lblPic.getHeight()));
                 lblName.setText(rsA.getString("art_name"));
                 lblDesc.setText(rsA.getString("art_desc"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(allArtsView.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    private void previousArt() {
+        try {            
+            if(rsA.previous()) {
+                lblPic.setIcon(new uploadFunction().resizePic(null, rsA.getBytes("art_img"), lblPic.getWidth(), lblPic.getHeight()));
+                lblName.setText(rsA.getString("art_name"));
+                lblDesc.setText(rsA.getString("art_desc"));              
             }
         } catch (SQLException ex) {
             Logger.getLogger(allArtsView.class.getName()).log(Level.SEVERE, null, ex);

@@ -59,7 +59,7 @@ public class artistMainMenu extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabelProfilePic = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnArtists = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabelUsername = new javax.swing.JLabel();
         jButtonLogout = new javax.swing.JButton();
@@ -83,8 +83,13 @@ public class artistMainMenu extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jButton2.setText("My Gallery");
 
-        jButton3.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
-        jButton3.setText("Artists");
+        btnArtists.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        btnArtists.setText("Artists");
+        btnArtists.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnArtistsActionPerformed(evt);
+            }
+        });
 
         jButton4.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jButton4.setText("Gallery");
@@ -121,7 +126,7 @@ public class artistMainMenu extends javax.swing.JFrame {
                 .addGap(48, 48, 48)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnArtists, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(61, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -140,7 +145,7 @@ public class artistMainMenu extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnArtists, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(57, 57, 57))
@@ -190,6 +195,15 @@ public class artistMainMenu extends javax.swing.JFrame {
         a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }//GEN-LAST:event_jLabelProfilePicMouseClicked
 
+    private void btnArtistsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArtistsActionPerformed
+       artistList al = new artistList();
+       al.setVisible(true);
+       al.pack();
+       al.setLocationRelativeTo(null);
+       al.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       this.dispose();
+    }//GEN-LAST:event_btnArtistsActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -227,8 +241,8 @@ public class artistMainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnArtists;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButtonLogout;
     private javax.swing.JLabel jLabel2;
