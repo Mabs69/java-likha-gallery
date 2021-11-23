@@ -29,7 +29,9 @@ public class ArtistEditProfile extends javax.swing.JFrame {
      */
     Connection con = myConnection.getConnection();
     PreparedStatement ps;
+    PreparedStatement ps1;
     ResultSet rs;
+    ResultSet rs1;
     String imagePath = null;
     
     public ArtistEditProfile() {
@@ -61,6 +63,7 @@ public class ArtistEditProfile extends javax.swing.JFrame {
         jTextFielddesc = new javax.swing.JTextField();
         btnSave = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
+        btnChangePass = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -113,6 +116,14 @@ public class ArtistEditProfile extends javax.swing.JFrame {
             }
         });
 
+        btnChangePass.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnChangePass.setText("Change password");
+        btnChangePass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChangePassActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -145,13 +156,16 @@ public class ArtistEditProfile extends javax.swing.JFrame {
                                 .addComponent(jTextFieldcd, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(179, 179, 179)
-                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(206, 206, 206)
+                        .addGap(200, 200, 200)
                         .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(179, 179, 179)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(177, 177, 177)
+                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(165, 165, 165)
+                        .addComponent(btnChangePass)))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -181,11 +195,13 @@ public class ArtistEditProfile extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldcd, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(btnChangePass, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -218,12 +234,20 @@ public class ArtistEditProfile extends javax.swing.JFrame {
                         ps.setString(2, jTextFieldlname.getText());
                         ps.setString(3, Login.currentUsername);
                     }
+                    
+                    ps1 = con.prepareStatement("UPDATE artist SET artist_desc = ?, artist_cd = ? WHERE artist_id = ?");
+                    ps1.setString(1, jTextFielddesc.getText());
+                    ps1.setString(2, jTextFieldcd.getText());
+                    ps1.setInt(3, Login.currentArtistID);
+                    
                     ps.executeUpdate();
+                    ps1.executeUpdate();
+                    
+                    successfullyUpdated();
 
                 } catch (SQLException | IOException ex) {
                         Logger.getLogger(ArtistEditProfile.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                
             } else {
                 JOptionPane.showMessageDialog(null, "You must update your description and contact details.");
             }
@@ -233,6 +257,16 @@ public class ArtistEditProfile extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSaveActionPerformed
     
+    private void successfullyUpdated(){
+        JOptionPane.showMessageDialog(null, "Successfully updated your profile information!");
+        ArtistProfile a = new ArtistProfile();
+        a.pack();
+        a.setVisible(true);
+        a.setLocationRelativeTo(null);
+        a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        this.dispose();
+    }
     private boolean isDescContactEmpty(){
         
         return jTextFielddesc.getText().isEmpty() || jTextFieldcd.getText().isEmpty();
@@ -263,24 +297,29 @@ public class ArtistEditProfile extends javax.swing.JFrame {
     
     private void displayArtist(){
         try {
-            ps = con.prepareStatement("SELECT r.fname, r.lname, a.artist_desc, a.artist_cd FROM registration r, artist a WHERE r.username = ?");
-            ps.setString(1, Login.currentUsername);
+            ps = con.prepareStatement("SELECT * FROM registration WHERE user_id = ?");
+            ps.setInt(1, Login.currentUserID);
             rs = ps.executeQuery();
             
+            ps1 = con.prepareStatement("SELECT * FROM artist WHERE artist_id = ?");
+            ps1.setInt(1, Login.currentArtistID);
+            rs1 = ps1.executeQuery();
+            
             if (rs.next()) {
-                jTextFieldfname.setText(rs.getString("r.fname"));
-                jTextFieldlname.setText(rs.getString("r.lname"));
-                
-                if (rs.getString("a.artist_desc") == null || rs.getString("a.artist_cd") == null) {
+                jTextFieldfname.setText(rs.getString("fname"));
+                jTextFieldlname.setText(rs.getString("lname"));
+            }
+            
+            if (rs1.next()) {
+                if (rs1.getString("artist_desc") == null || rs1.getString("artist_cd") == null) {
                     jTextFielddesc.setText("");
                     jTextFieldcd.setText("");
                 } else {
-                    jTextFielddesc.setText(rs.getString("a.artist_desc"));
-                    jTextFieldcd.setText(rs.getString("a.artist_cd"));
+                    jTextFielddesc.setText(rs1.getString("artist_desc"));
+                    jTextFieldcd.setText(rs1.getString("artist_cd"));
                 }
-            } else {
-                
             }
+            
         } catch (SQLException ex) {
             Logger.getLogger(ArtistEditProfile.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -295,6 +334,18 @@ public class ArtistEditProfile extends javax.swing.JFrame {
         ap.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.dispose();
     }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void btnChangePassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangePassActionPerformed
+        
+        changePassword c = new changePassword();
+        c.setVisible(true);
+        c.pack();
+        c.setLocationRelativeTo(null);
+        c.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        this.dispose();
+        
+    }//GEN-LAST:event_btnChangePassActionPerformed
 
     /**
      * @param args the command line arguments
@@ -333,6 +384,7 @@ public class ArtistEditProfile extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
+    private javax.swing.JButton btnChangePass;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton jButtonUpload;
     private javax.swing.JLabel jLabel2;
