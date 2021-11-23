@@ -1,13 +1,6 @@
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import static sun.security.jgss.GSSUtil.login;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -20,6 +13,9 @@ import static sun.security.jgss.GSSUtil.login;
  */
 public class Login extends javax.swing.JFrame {
 
+    public static String currentUsername;
+    public static String currentUserType;
+    
     /**
      * Creates new form Login
      */
@@ -165,9 +161,11 @@ public class Login extends javax.swing.JFrame {
     private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
         if(emptyChecker()) {
             String u = txtuser.getText();
+            currentUsername = txtuser.getText();
             String p = String.valueOf(txtpass.getPassword());
             
             Queries q = new Queries();
+            currentUserType = q.getUserType(u);
             q.userLogin(u, p);
             this.dispose();
         }

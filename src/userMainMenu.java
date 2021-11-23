@@ -1,3 +1,14 @@
+
+import java.awt.Image;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -16,6 +27,26 @@ public class userMainMenu extends javax.swing.JFrame {
     public userMainMenu() {
         initComponents();
         this.setLocationRelativeTo(null);
+
+        Connection con = myConnection.getConnection();
+        PreparedStatement ps; 
+        ResultSet rs;
+        
+        try {
+            ps = con.prepareStatement("select `pic` from registration where `username` = ?");
+            ps.setString(1, Login.currentUsername);
+            rs = ps.executeQuery();
+            
+            if(rs.next()) {
+                jLabelProfilePic.setIcon(new uploadFunction().resizePic(null, rs.getBytes("pic"), jLabelProfilePic.getWidth(), jLabelProfilePic.getHeight()));
+                jLabelUsername.setText(Login.currentUsername);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(userMainMenu.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+        
     }
 
     /**
@@ -27,64 +58,91 @@ public class userMainMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jLabelProfilePic = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnGallery = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jLabelUsername = new javax.swing.JLabel();
+        jButtonLogout = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(650, 370));
+        getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 24)); // NOI18N
-        jLabel1.setText("PIC");
+        jLabelProfilePic.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 24)); // NOI18N
+        jLabelProfilePic.setText("PIC");
+        jLabelProfilePic.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelProfilePic.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelProfilePicMouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabelProfilePic);
+        jLabelProfilePic.setBounds(560, 10, 60, 50);
 
         jButton1.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jButton1.setText("Artists");
+        getContentPane().add(jButton1);
+        jButton1.setBounds(340, 158, 270, 110);
 
-        jButton2.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
-        jButton2.setText("Gallery");
+        btnGallery.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        btnGallery.setText("Gallery");
+        btnGallery.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGalleryActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnGallery);
+        btnGallery.setBounds(20, 160, 270, 110);
 
         jLabel2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 24)); // NOI18N
         jLabel2.setText("Main Menu (User)");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(220, 70, 207, 40);
 
-        jLabel3.setText("BACK ARROW");
+        jLabelUsername.setText("jLabel1");
+        getContentPane().add(jLabelUsername);
+        jLabelUsername.setBounds(480, 30, 60, 14);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(130, 130, 130)
-                .addComponent(jLabel2)
-                .addGap(153, 153, 153)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel3))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(90, 90, 90)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(58, Short.MAX_VALUE))
-        );
+        jButtonLogout.setText("Logout");
+        jButtonLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLogoutActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonLogout);
+        jButtonLogout.setBounds(10, 10, 70, 23);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogoutActionPerformed
+        Login.currentUsername = null;
+        LoginRegister lr = new LoginRegister();
+        lr.setVisible(true);
+        lr.pack();
+        lr.setLocationRelativeTo(null);
+        lr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_jButtonLogoutActionPerformed
+
+    private void jLabelProfilePicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelProfilePicMouseClicked
+        userProfileView up = new userProfileView();
+        up.setVisible(true);
+        up.pack();
+        up.setLocationRelativeTo(null);
+        up.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_jLabelProfilePicMouseClicked
+
+    private void btnGalleryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGalleryActionPerformed
+        allArtsView aav = new allArtsView();
+        aav.setVisible(true);
+        aav.pack();
+        aav.setLocationRelativeTo(null);
+        aav.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_btnGalleryActionPerformed
 
     /**
      * @param args the command line arguments
@@ -122,10 +180,11 @@ public class userMainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGallery;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButtonLogout;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabelProfilePic;
+    private javax.swing.JLabel jLabelUsername;
     // End of variables declaration//GEN-END:variables
 }
