@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -19,9 +20,8 @@ import javax.swing.JFrame;
  */
 public class artistMainMenu extends javax.swing.JFrame {
 
-    /**
-     * Creates new form artistMainMenu
-     */
+    ResultSet rs1;
+    
     public artistMainMenu() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -58,7 +58,7 @@ public class artistMainMenu extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabelProfilePic = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btnMyGallery = new javax.swing.JButton();
         btnArtists = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabelUsername = new javax.swing.JLabel();
@@ -80,8 +80,13 @@ public class artistMainMenu extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
-        jButton2.setText("My Gallery");
+        btnMyGallery.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        btnMyGallery.setText("My Gallery");
+        btnMyGallery.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMyGalleryActionPerformed(evt);
+            }
+        });
 
         btnArtists.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         btnArtists.setText("Artists");
@@ -122,7 +127,7 @@ public class artistMainMenu extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jButton2)
+                .addComponent(btnMyGallery)
                 .addGap(48, 48, 48)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
@@ -147,7 +152,7 @@ public class artistMainMenu extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnArtists, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnMyGallery, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(57, 57, 57))
         );
 
@@ -204,6 +209,30 @@ public class artistMainMenu extends javax.swing.JFrame {
        this.dispose();
     }//GEN-LAST:event_btnArtistsActionPerformed
 
+    private void btnMyGalleryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMyGalleryActionPerformed
+        Queries q = new Queries();
+        rs1 = q.getMyGallery(Login.currentArtistID);
+        try {
+            if(rs1.next()) {
+                JOptionPane.showMessageDialog(null, "You have art bro");
+            }
+            else {
+                int c = JOptionPane.showConfirmDialog(null, "You have no Art yet. Add art now?", "Art", JOptionPane.YES_NO_OPTION);
+                if (c == JOptionPane.YES_OPTION) {
+                    addGallery al = new addGallery();
+                    al.setVisible(true);
+                    al.pack();
+                    al.setLocationRelativeTo(null);
+                    al.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    this.dispose();
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(artistMainMenu.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+    }//GEN-LAST:event_btnMyGalleryActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -242,7 +271,7 @@ public class artistMainMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnArtists;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnMyGallery;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButtonLogout;
     private javax.swing.JLabel jLabel2;

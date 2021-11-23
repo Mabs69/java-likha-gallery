@@ -299,26 +299,51 @@ public class Queries {
         return path;
     }
     
-//    public ResultSet getMyGallery() {
-//        Connection con = myConnection.getConnection();
-//        PreparedStatement ps;
-//        ResultSet rs;
-//        
-//        try {
-//            ps = con.prepareStatement("SELECT * FROM art WHERE artist_id = ?;");
-//            ps.setInt(1, u);
-//            
-//            rs = ps.executeQuery();
-//            
-//            if(rs.next()) {
-//                path = rs.getBytes("pic");
-//            }
-//            
-//        } catch (SQLException ex) {
-//            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-//            System.out.println(ex.getMessage());
-//        }
-//    }
+    public ResultSet getMyGallery(int aid) {
+        Connection con = myConnection.getConnection();
+        PreparedStatement ps;
+        ResultSet rs = null;
+        
+        try {
+            ps = con.prepareStatement("SELECT * FROM art WHERE artist_id = ?;");
+            ps.setInt(1, aid);
+            
+            rs = ps.executeQuery();
+            
+
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+        return rs;
+    }
+    
+    public void addGallery(String n, String d, byte[] img, int aid) {
+        Connection con = myConnection.getConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+        
+        try {
+            ps = con.prepareStatement("INSERT INTO art (artist_id, art_name, art_desc, art_img) VALUES (?,?,?,?)");
+            ps.setInt(1, aid);
+            ps.setString(2, n);
+            ps.setString(3, d);
+            ps.setBytes(4, img);
+            
+            if(ps.executeUpdate() != 0) {
+                JOptionPane.showMessageDialog(null, "Art Added to Your Gallery.");
+                artistMainMenu a = new artistMainMenu();
+                a.setVisible(true);
+                a.pack();
+                a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                a.setLocationRelativeTo(null);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
 
     
