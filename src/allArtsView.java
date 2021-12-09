@@ -93,6 +93,12 @@ public class allArtsView extends javax.swing.JFrame {
         lbArtistName.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbArtistName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbArtistName.setText("Artist");
+        lbArtistName.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lbArtistName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbArtistNameMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -183,6 +189,19 @@ public class allArtsView extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void lbArtistNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbArtistNameMouseClicked
+        
+        artistDescription a = new artistDescription(uid);
+        this.dispose();
+        a.pack();
+        a.setVisible(true);
+        a.setLocationRelativeTo(null);
+        a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        
+        
+    }//GEN-LAST:event_lbArtistNameMouseClicked
     
     private void nextArt() {
         try {
@@ -233,7 +252,9 @@ public class allArtsView extends javax.swing.JFrame {
             if(rsUID.next()) {
                 uid = rsUID.getInt("user_id");
                 rsAr = st.executeQuery("SELECT fname, lname FROM registration WHERE user_id = "+uid+"");
-                lbArtistName.setText(rsAr.getString("fname")+" "+rsAr.getString("lname"));
+                
+                if (rsAr.next())
+                    lbArtistName.setText(rsAr.getString("fname")+" "+rsAr.getString("lname"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(allArtsView.class.getName()).log(Level.SEVERE, null, ex);
