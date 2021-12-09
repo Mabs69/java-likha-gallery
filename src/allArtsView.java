@@ -22,13 +22,18 @@ import javax.swing.JOptionPane;
 public class allArtsView extends javax.swing.JFrame {
       
     ResultSet rsA;
+    ResultSet rsUID;
+    ResultSet rsAr;
+    private int aid;
+    private int uid;
     
     public allArtsView() {
         initComponents();
         this.setLocationRelativeTo(null);
 
         getArt();
-        nextArt();   
+        nextArt();
+        getArtistName();
     }
 
     /**
@@ -48,7 +53,7 @@ public class allArtsView extends javax.swing.JFrame {
         btnBack = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
         btnPrev = new javax.swing.JButton();
-        lblName1 = new javax.swing.JLabel();
+        lbArtistName = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,9 +90,9 @@ public class allArtsView extends javax.swing.JFrame {
             }
         });
 
-        lblName1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblName1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblName1.setText("Artist");
+        lbArtistName.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbArtistName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbArtistName.setText("Artist");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -113,7 +118,7 @@ public class allArtsView extends javax.swing.JFrame {
                                 .addGap(11, 11, 11)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblName1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(lbArtistName, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(btnNext)
                 .addGap(20, 20, 20))
@@ -141,7 +146,7 @@ public class allArtsView extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(lblName)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblName1)
+                .addComponent(lbArtistName)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
@@ -152,10 +157,12 @@ public class allArtsView extends javax.swing.JFrame {
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         nextArt();
+        getArtistName();
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
         previousArt();
+        getArtistName();
     }//GEN-LAST:event_btnPrevActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -183,6 +190,7 @@ public class allArtsView extends javax.swing.JFrame {
                 lblPic.setIcon(new uploadFunction().resizePic(null, rsA.getBytes("art_img"), lblPic.getWidth(), lblPic.getHeight()));
                 lblName.setText(rsA.getString("art_name"));
                 lblDesc.setText(rsA.getString("art_desc"));
+                aid = rsA.getInt("artist_id");
             }
         } catch (SQLException ex) {
             Logger.getLogger(allArtsView.class.getName()).log(Level.SEVERE, null, ex);
@@ -195,7 +203,8 @@ public class allArtsView extends javax.swing.JFrame {
             if(rsA.previous()) {
                 lblPic.setIcon(new uploadFunction().resizePic(null, rsA.getBytes("art_img"), lblPic.getWidth(), lblPic.getHeight()));
                 lblName.setText(rsA.getString("art_name"));
-                lblDesc.setText(rsA.getString("art_desc"));              
+                lblDesc.setText(rsA.getString("art_desc"));
+                aid = rsA.getInt("artist_id");
             }
         } catch (SQLException ex) {
             Logger.getLogger(allArtsView.class.getName()).log(Level.SEVERE, null, ex);
@@ -213,7 +222,24 @@ public class allArtsView extends javax.swing.JFrame {
             Logger.getLogger(allArtsView.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println(ex.getMessage());
         }
-    }   
+    }
+    
+    private void getArtistName() {
+        Connection con = myConnection.getConnection(); 
+        try {
+            Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            rsUID = st.executeQuery("SELECT DISTINCT artist.user_id FROM artist, art WHERE art.artist_id = "+aid+" AND artist.artist_id = "+aid+"");
+            
+            if(rsUID.next()) {
+                uid = rsUID.getInt("user_id");
+                rsAr = st.executeQuery("SELECT fname, lname FROM registration WHERE user_id = "+uid+"");
+                lbArtistName.setText(rsAr.getString("fname")+" "+rsAr.getString("lname"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(allArtsView.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+    }
     
     /**
      * @param args the command line arguments
@@ -256,9 +282,9 @@ public class allArtsView extends javax.swing.JFrame {
     private javax.swing.JButton btnPrev;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbArtistName;
     private javax.swing.JTextArea lblDesc;
     private javax.swing.JLabel lblName;
-    private javax.swing.JLabel lblName1;
     private javax.swing.JLabel lblPic;
     // End of variables declaration//GEN-END:variables
 }
