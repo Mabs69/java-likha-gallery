@@ -226,8 +226,6 @@ public class allArtsView extends javax.swing.JFrame {
         a.setLocationRelativeTo(null);
         a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        
-        
     }//GEN-LAST:event_lbArtistNameMouseClicked
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
