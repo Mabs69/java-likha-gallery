@@ -31,6 +31,7 @@ public class artistDescription extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         txt_contact = new javax.swing.JLabel();
+        txt_name1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,6 +47,10 @@ public class artistDescription extends javax.swing.JFrame {
         txt_contact.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txt_contact.setText("CONTACT");
 
+        txt_name1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txt_name1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txt_name1.setText("ALL ARTS");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -60,7 +65,10 @@ public class artistDescription extends javax.swing.JFrame {
                             .addComponent(txt_contact, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(82, 82, 82)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(204, 204, 204)
+                        .addComponent(txt_name1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(101, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -74,7 +82,9 @@ public class artistDescription extends javax.swing.JFrame {
                 .addComponent(txt_contact)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(txt_name1)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
@@ -121,5 +131,6 @@ public class artistDescription extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel txt_contact;
     private javax.swing.JLabel txt_name;
+    private javax.swing.JLabel txt_name1;
     // End of variables declaration//GEN-END:variables
 }
