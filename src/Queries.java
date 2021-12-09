@@ -405,11 +405,11 @@ public class Queries {
     ResultSet rs;
     try{
         st = con.createStatement();        
-        rs = st.executeQuery("SELECT fname, lname FROM registration WHERE user_type = 'artist'");
+        rs = st.executeQuery("SELECT a.artist_id, r.fname, r.lname FROM registration r, artist a WHERE a.user_id = r.user_id");
 
         while(rs.next())
         {
-            String full = rs.getString("fname") + " " + rs.getString("lname");
+            String full = rs.getInt("artist_id")+" - "+rs.getString("fname") + " " + rs.getString("lname");
             artistList.add(full);
         }
         

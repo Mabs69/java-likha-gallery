@@ -27,6 +27,8 @@ public class allArtsView extends javax.swing.JFrame {
     ResultSet rsAr;
     private int aid;
     private int uid;
+    private String fname;
+    private String lname;
     
     Queries q = new Queries();
     ArrayList artists = q.ArtistList();
@@ -104,6 +106,12 @@ public class allArtsView extends javax.swing.JFrame {
         lbArtistName.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lbArtistNameMouseClicked(evt);
+            }
+        });
+
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
             }
         });
 
@@ -221,6 +229,23 @@ public class allArtsView extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_lbArtistNameMouseClicked
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        int index = jComboBox1.getSelectedIndex();
+        
+        if(index == 0) {
+            getArt();
+            nextArt();
+            getArtistName();
+        }
+        else {
+            int value = Integer.parseInt(String.valueOf(jComboBox1.getSelectedItem()).replaceAll("[^0-9]", ""));
+            getSpecificArts(value);
+            nextArt();
+            getArtistName();
+            JOptionPane.showMessageDialog(null, "Arts Filtered for "+jComboBox1.getSelectedItem().toString()+" Only");
+        }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
     
     public void fillCombo()
     {
@@ -272,6 +297,18 @@ public class allArtsView extends javax.swing.JFrame {
         }
     }
     
+    private void getSpecificArts(int uid) {
+        Connection con = myConnection.getConnection(); 
+        try {
+            Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            rsA = st.executeQuery("SELECT * FROM art WHERE artist_id = "+uid+"");
+     
+        } catch (SQLException ex) {
+            Logger.getLogger(allArtsView.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+    }
+    
     private void getArtistName() {
         Connection con = myConnection.getConnection(); 
         try {
@@ -282,8 +319,11 @@ public class allArtsView extends javax.swing.JFrame {
                 uid = rsUID.getInt("user_id");
                 rsAr = st.executeQuery("SELECT fname, lname FROM registration WHERE user_id = "+uid+"");
                 
-                if (rsAr.next())
-                    lbArtistName.setText(rsAr.getString("fname")+" "+rsAr.getString("lname"));
+                if (rsAr.next()) {
+                    fname = rsAr.getString("fname");
+                    lname = rsAr.getString("lname");
+                    lbArtistName.setText(fname + " " + lname);
+                }
             }
         } catch (SQLException ex) {
             Logger.getLogger(allArtsView.class.getName()).log(Level.SEVERE, null, ex);
