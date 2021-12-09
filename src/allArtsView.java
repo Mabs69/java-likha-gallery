@@ -48,6 +48,7 @@ public class allArtsView extends javax.swing.JFrame {
         btnBack = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
         btnPrev = new javax.swing.JButton();
+        lblName1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,8 +56,10 @@ public class allArtsView extends javax.swing.JFrame {
         jLabel1.setText("GALLERY");
 
         lblName.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblName.setText("NAME");
 
+        lblDesc.setEditable(false);
         lblDesc.setColumns(20);
         lblDesc.setRows(5);
         jScrollPane1.setViewportView(lblDesc);
@@ -82,6 +85,10 @@ public class allArtsView extends javax.swing.JFrame {
             }
         });
 
+        lblName1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblName1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblName1.setText("Artist");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -96,16 +103,18 @@ public class allArtsView extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addComponent(btnPrev)
-                        .addGap(18, 18, 18)
+                        .addGap(33, 33, 33)
                         .addComponent(lblPic, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(160, 160, 160)
-                        .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(11, 11, 11)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblName1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(btnNext)
                 .addGap(20, 20, 20))
         );
@@ -118,19 +127,24 @@ public class allArtsView extends javax.swing.JFrame {
                     .addComponent(btnBack))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(lblPic, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(138, 138, 138)
-                        .addComponent(btnNext))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(139, 139, 139)
-                        .addComponent(btnPrev)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(138, 138, 138)
+                                .addComponent(btnNext))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(139, 139, 139)
+                                .addComponent(btnPrev)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                        .addComponent(lblPic, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(lblName)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblName1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addGap(22, 22, 22))
         );
 
         pack();
@@ -244,6 +258,7 @@ public class allArtsView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea lblDesc;
     private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblName1;
     private javax.swing.JLabel lblPic;
     // End of variables declaration//GEN-END:variables
 }
