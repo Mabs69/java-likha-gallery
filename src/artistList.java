@@ -20,6 +20,7 @@ import javax.swing.JFrame;
 public class artistList extends javax.swing.JFrame {
 
     ResultSet rs;
+    String id;
     
     public artistList() {
         initComponents();
@@ -47,6 +48,7 @@ public class artistList extends javax.swing.JFrame {
         btnNext = new javax.swing.JButton();
         btnPrev = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
+        btnViewArts = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,6 +90,14 @@ public class artistList extends javax.swing.JFrame {
             }
         });
 
+        btnViewArts.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnViewArts.setText("View Arts");
+        btnViewArts.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewArtsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -113,8 +123,13 @@ public class artistList extends javax.swing.JFrame {
                                 .addComponent(btnNext)))))
                 .addGap(53, 53, 53))
             .addGroup(layout.createSequentialGroup()
-                .addGap(191, 191, 191)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(191, 191, 191)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(278, 278, 278)
+                        .addComponent(btnViewArts)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -145,7 +160,9 @@ public class artistList extends javax.swing.JFrame {
                 .addComponent(txtCD)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnViewArts)
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         pack();
@@ -160,29 +177,18 @@ public class artistList extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPrevActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        if(Login.currentUserType.equals("artist")) {        
-            artistMainMenu amm = new artistMainMenu();
-            amm.setVisible(true);
-            amm.pack();
-            amm.setLocationRelativeTo(null);
-            amm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            this.dispose();
-        }
-        else {
-            userMainMenu umm = new userMainMenu();
-            umm.setVisible(true);
-            umm.pack();
-            umm.setLocationRelativeTo(null);
-            umm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            this.dispose();
-        }
+        back();
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnViewArtsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewArtsActionPerformed
+        viewSpecificArts();
+    }//GEN-LAST:event_btnViewArtsActionPerformed
 
     public void getArtists() {
         Connection con = myConnection.getConnection(); 
         try {
             Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            rs = st.executeQuery("SELECT registration.pic, registration.fname, registration.lname, artist.artist_cd, artist.artist_desc FROM registration, artist WHERE artist.user_id = registration.user_id");
+            rs = st.executeQuery("SELECT registration.pic, registration.fname, registration.lname, artist.artist_cd, artist.artist_desc, artist.artist_id FROM registration, artist WHERE artist.user_id = registration.user_id");
      
         } catch (SQLException ex) {
             Logger.getLogger(allArtsView.class.getName()).log(Level.SEVERE, null, ex);
@@ -203,6 +209,7 @@ public class artistList extends javax.swing.JFrame {
                     txtDesc.setText("*No Description Details");
                 else
                     txtDesc.setText(rs.getString(5));
+                id = rs.getInt(6)+ " - "+rs.getString(2) + " " + rs.getString(3);
             }
         } catch (SQLException ex) {
             Logger.getLogger(allArtsView.class.getName()).log(Level.SEVERE, null, ex);
@@ -223,11 +230,40 @@ public class artistList extends javax.swing.JFrame {
                     txtDesc.setText("*No Description Details");
                 else
                     txtDesc.setText(rs.getString(5));
+                id = rs.getInt(6)+ " - "+rs.getString(2) + " " + rs.getString(3);
             }
         } catch (SQLException ex) {
             Logger.getLogger(allArtsView.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println(ex.getMessage());
         }
+    }
+    
+    private void back() {
+        if(Login.currentUserType.equals("artist")) {        
+            artistMainMenu amm = new artistMainMenu();
+            amm.setVisible(true);
+            amm.pack();
+            amm.setLocationRelativeTo(null);
+            amm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            this.dispose();
+        }
+        else {
+            userMainMenu umm = new userMainMenu();
+            umm.setVisible(true);
+            umm.pack();
+            umm.setLocationRelativeTo(null);
+            umm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            this.dispose();
+        }
+    }
+    
+    private void viewSpecificArts() {
+        allArtsView art = new allArtsView(id);
+        art.setVisible(true);
+        art.pack();
+        art.setLocationRelativeTo(null);
+        art.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
     }
     
     /**
@@ -269,6 +305,7 @@ public class artistList extends javax.swing.JFrame {
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnPrev;
+    private javax.swing.JButton btnViewArts;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblPic;
