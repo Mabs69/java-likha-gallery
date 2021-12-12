@@ -33,15 +33,25 @@ public class allArtsView extends javax.swing.JFrame {
     Queries q = new Queries();
     ArrayList artists = q.ArtistList();
     
+    public allArtsView(String id) {
+        initComponents();
+        this.setLocationRelativeTo(null);
+        
+        fillCombo();
+        jComboBox1.setSelectedItem(id);
+        selectFilter();
+    }
+    
     public allArtsView() {
         initComponents();
         this.setLocationRelativeTo(null);
 
         getArt();
-        nextArt();
         getArtistName();
         fillCombo();
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -199,50 +209,15 @@ public class allArtsView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPrevActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        if(Login.currentUserType.equals("artist")) {        
-            artistMainMenu amm = new artistMainMenu();
-            amm.setVisible(true);
-            amm.pack();
-            amm.setLocationRelativeTo(null);
-            amm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            this.dispose();
-        }
-        else {
-            userMainMenu umm = new userMainMenu();
-            umm.setVisible(true);
-            umm.pack();
-            umm.setLocationRelativeTo(null);
-            umm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            this.dispose();
-        }
+        back();
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void lbArtistNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbArtistNameMouseClicked
-        
-        artistDescription a = new artistDescription(uid);
-        this.dispose();
-        a.pack();
-        a.setVisible(true);
-        a.setLocationRelativeTo(null);
-        a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+        artistDescription();
     }//GEN-LAST:event_lbArtistNameMouseClicked
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        int index = jComboBox1.getSelectedIndex();
-        
-        if(index == 0) {
-            getArt();
-            nextArt();
-            getArtistName();
-        }
-        else {
-            int value = Integer.parseInt(String.valueOf(jComboBox1.getSelectedItem()).replaceAll("[^0-9]", ""));
-            getSpecificArts(value);
-            nextArt();
-            getArtistName();
-            JOptionPane.showMessageDialog(null, "Arts Filtered for "+jComboBox1.getSelectedItem().toString()+" Only");
-        }
+        selectFilter();
     }//GEN-LAST:event_jComboBox1ActionPerformed
     
     public void fillCombo()
@@ -289,6 +264,16 @@ public class allArtsView extends javax.swing.JFrame {
             Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             rsA = st.executeQuery("SELECT * FROM art");
      
+            if(rsA.next()) {
+                lblPic.setIcon(new uploadFunction().resizePic(null, rsA.getBytes("art_img"), lblPic.getWidth(), lblPic.getHeight()));
+                lblName.setText(rsA.getString("art_name"));
+                lblDesc.setText(rsA.getString("art_desc"));
+                aid = rsA.getInt("artist_id");
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "There are no artworks to show");
+                back();
+            }
         } catch (SQLException ex) {
             Logger.getLogger(allArtsView.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println(ex.getMessage());
@@ -300,10 +285,36 @@ public class allArtsView extends javax.swing.JFrame {
         try {
             Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             rsA = st.executeQuery("SELECT * FROM art WHERE artist_id = "+uid+"");
+            
+            if(rsA.next()) {
+                lblPic.setIcon(new uploadFunction().resizePic(null, rsA.getBytes("art_img"), lblPic.getWidth(), lblPic.getHeight()));
+                lblName.setText(rsA.getString("art_name"));
+                lblDesc.setText(rsA.getString("art_desc"));
+                aid = rsA.getInt("artist_id");
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "There are no artworks to show for "+jComboBox1.getSelectedItem().toString());
+                jComboBox1.setSelectedIndex(0);
+                selectFilter();
+            }
      
         } catch (SQLException ex) {
             Logger.getLogger(allArtsView.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println(ex.getMessage());
+        }
+    }
+    
+    private void selectFilter() {
+        int index = jComboBox1.getSelectedIndex();
+        
+        if(index == 0) {
+            getArt();
+            getArtistName();
+        }
+        else {
+            int value = Integer.parseInt(String.valueOf(jComboBox1.getSelectedItem()).replaceAll("[^0-9]", ""));
+            getSpecificArts(value);
+            getArtistName();
         }
     }
     
@@ -327,6 +338,34 @@ public class allArtsView extends javax.swing.JFrame {
             Logger.getLogger(allArtsView.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println(ex.getMessage());
         }
+    }
+    
+    private void back() {
+        if(Login.currentUserType.equals("artist")) {        
+            artistMainMenu amm = new artistMainMenu();
+            amm.setVisible(true);
+            amm.pack();
+            amm.setLocationRelativeTo(null);
+            amm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            this.dispose();
+        }
+        else {
+            userMainMenu umm = new userMainMenu();
+            umm.setVisible(true);
+            umm.pack();
+            umm.setLocationRelativeTo(null);
+            umm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            this.dispose();
+        }
+    }
+    
+    private void artistDescription() {
+        artistDescription a = new artistDescription(uid);
+        this.dispose();
+        a.pack();
+        a.setVisible(true);
+        a.setLocationRelativeTo(null);
+        a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     
     /**
