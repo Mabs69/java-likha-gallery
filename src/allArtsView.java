@@ -44,14 +44,14 @@ public class allArtsView extends javax.swing.JFrame {
     
     public allArtsView() {
         initComponents();
+        
         this.setLocationRelativeTo(null);
-
         getArt();
         getArtistName();
         fillCombo();
+        
+        
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -270,10 +270,11 @@ public class allArtsView extends javax.swing.JFrame {
                 lblDesc.setText(rsA.getString("art_desc"));
                 aid = rsA.getInt("artist_id");
             }
-            else {
-                JOptionPane.showMessageDialog(null, "There are no artworks to show");
-                back();
-            }
+//            else {
+//                JOptionPane.showMessageDialog(null, "There are no artworks to show");
+//                back();
+//                this.dispose();
+//            }
         } catch (SQLException ex) {
             Logger.getLogger(allArtsView.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println(ex.getMessage());
