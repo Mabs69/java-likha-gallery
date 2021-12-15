@@ -6,6 +6,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -20,7 +21,10 @@ import javax.swing.JFrame;
 public class artistList extends javax.swing.JFrame {
 
     ResultSet rs;
+    ResultSet rsA;
     String id;
+    private int artistId;
+    
     
     public artistList() {
         initComponents();
@@ -181,9 +185,36 @@ public class artistList extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnViewArtsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewArtsActionPerformed
-        viewSpecificArts();
+
+       
+            if (getSpecificArts(artistId)) {
+                viewSpecificArts();
+            } else {
+                JOptionPane.showMessageDialog(null, "NO ARTS");
+            }
+        
+        
     }//GEN-LAST:event_btnViewArtsActionPerformed
 
+    
+    private boolean getSpecificArts(int uid) {
+        Connection con = myConnection.getConnection(); 
+        boolean s = false;
+        try {
+            Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            rsA = st.executeQuery("SELECT * FROM art WHERE artist_id = "+uid+"");
+            
+            if(rsA.next()) {
+                s = true;
+            }
+     
+        } catch (SQLException ex) {
+            Logger.getLogger(allArtsView.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+        return s;
+    }
+    
     public void getArtists() {
         Connection con = myConnection.getConnection(); 
         try {
@@ -210,6 +241,8 @@ public class artistList extends javax.swing.JFrame {
                 else
                     txtDesc.setText(rs.getString(5));
                 id = rs.getInt(6)+ " - "+rs.getString(2) + " " + rs.getString(3);
+                
+                artistId = rs.getInt(6);
             }
         } catch (SQLException ex) {
             Logger.getLogger(allArtsView.class.getName()).log(Level.SEVERE, null, ex);
@@ -231,6 +264,7 @@ public class artistList extends javax.swing.JFrame {
                 else
                     txtDesc.setText(rs.getString(5));
                 id = rs.getInt(6)+ " - "+rs.getString(2) + " " + rs.getString(3);
+                artistId = rs.getInt(6);
             }
         } catch (SQLException ex) {
             Logger.getLogger(allArtsView.class.getName()).log(Level.SEVERE, null, ex);

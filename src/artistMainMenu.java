@@ -3,6 +3,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -21,6 +22,7 @@ import javax.swing.JOptionPane;
 public class artistMainMenu extends javax.swing.JFrame {
 
     ResultSet rs1;
+    ResultSet rsA;
     
     public artistMainMenu() {
         initComponents();
@@ -183,14 +185,39 @@ public class artistMainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonLogoutActionPerformed
 
     private void btnAllGalleryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAllGalleryActionPerformed
-        allArtsView aav = new allArtsView();
-        aav.setVisible(true);
-        aav.pack();
-        aav.setLocationRelativeTo(null);
-        aav.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose();
+        
+        if (checkArts()) {
+            allArtsView aav = new allArtsView();
+            aav.setVisible(true);
+            aav.pack();
+            aav.setLocationRelativeTo(null);
+            aav.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "NO ARTS");
+        }
+        
     }//GEN-LAST:event_btnAllGalleryActionPerformed
 
+    private boolean checkArts(){
+        boolean c = false;
+        
+        Connection con = myConnection.getConnection(); 
+        try {
+            Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            rsA = st.executeQuery("SELECT * FROM art");
+     
+            if(rsA.next()) {
+                c = true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(allArtsView.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+        
+        return c;
+    }
+    
     private void jLabelProfilePicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelProfilePicMouseClicked
         ArtistProfile a = new ArtistProfile();
         this.dispose();
@@ -201,14 +228,39 @@ public class artistMainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelProfilePicMouseClicked
 
     private void btnArtistsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArtistsActionPerformed
-       artistList al = new artistList();
-       al.setVisible(true);
-       al.pack();
-       al.setLocationRelativeTo(null);
-       al.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-       this.dispose();
+       
+       if (checkArtist()) {
+            artistList al = new artistList();
+            al.setVisible(true);
+            al.pack();
+            al.setLocationRelativeTo(null);
+            al.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            this.dispose();
+       } else {
+           JOptionPane.showMessageDialog(null, "NO ARTIST");
+       }
+       
     }//GEN-LAST:event_btnArtistsActionPerformed
 
+    private boolean checkArtist() {
+        boolean c = false;
+        
+        Connection con = myConnection.getConnection(); 
+        try {
+            Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            rsA = st.executeQuery("SELECT * FROM artist");
+     
+            if(rsA.next()) {
+                c = true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(allArtsView.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+        
+        return c;
+    }
+    
     private void btnMyGalleryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMyGalleryActionPerformed
         Queries q = new Queries();
         rs1 = q.getMyGallery(Login.currentArtistID);
