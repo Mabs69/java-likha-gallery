@@ -71,7 +71,7 @@ public class ArtistEditProfile extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Harrington", 1, 48)); // NOI18N
         jLabel2.setText("Artist Profile");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(387, 35, 342, 40));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 40, 342, 40));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel3.setText("First Name:");
@@ -83,7 +83,7 @@ public class ArtistEditProfile extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel5.setText("Artist Description:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(56, 411, -1, 40));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, -1, 40));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel6.setText("Artist Contact Details:");
