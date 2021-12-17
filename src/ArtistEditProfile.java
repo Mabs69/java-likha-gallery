@@ -1,4 +1,5 @@
 
+import java.awt.Color;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -37,6 +38,7 @@ public class ArtistEditProfile extends javax.swing.JFrame {
     public ArtistEditProfile() {
         initComponents();
         
+        this.getContentPane().setBackground(Color.yellow);
         displayArtist();
     }
 
@@ -66,7 +68,6 @@ public class ArtistEditProfile extends javax.swing.JFrame {
         btnChangePass = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(0, 0, 0));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Harrington", 1, 48)); // NOI18N
