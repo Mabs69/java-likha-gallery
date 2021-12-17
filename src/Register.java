@@ -138,7 +138,7 @@ public class Register extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnUpload);
-        btnUpload.setBounds(790, 440, 117, 33);
+        btnUpload.setBounds(790, 540, 117, 33);
 
         jLabelLoginHere.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 14)); // NOI18N
         jLabelLoginHere.setForeground(new java.awt.Color(0, 51, 255));
@@ -155,7 +155,7 @@ public class Register extends javax.swing.JFrame {
         jLabelImage.setForeground(new java.awt.Color(153, 153, 153));
         jLabelImage.setName(""); // NOI18N
         jPanel1.add(jLabelImage);
-        jLabelImage.setBounds(540, 160, 370, 260);
+        jLabelImage.setBounds(540, 160, 370, 370);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel7.setText("Last Name");

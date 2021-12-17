@@ -62,16 +62,30 @@ public class userMainMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabelProfilePic = new javax.swing.JLabel();
-        btnArtists = new javax.swing.JButton();
-        btnGallery = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabelUsername = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jButtonLogout = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabelProfilePic = new javax.swing.JLabel();
+        jLabelUsername = new javax.swing.JLabel();
+        btnGallery = new javax.swing.JButton();
+        btnArtists = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(650, 370));
         getContentPane().setLayout(null);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jButtonLogout.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonLogout.setText("Logout");
+        jButtonLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLogoutActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Harrington", 1, 48)); // NOI18N
+        jLabel2.setText("Main Menu (User)");
 
         jLabelProfilePic.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 24)); // NOI18N
         jLabelProfilePic.setText("PIC");
@@ -81,46 +95,68 @@ public class userMainMenu extends javax.swing.JFrame {
                 jLabelProfilePicMouseClicked(evt);
             }
         });
-        getContentPane().add(jLabelProfilePic);
-        jLabelProfilePic.setBounds(560, 10, 60, 50);
 
-        btnArtists.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
-        btnArtists.setText("Artists");
-        btnArtists.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnArtistsActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnArtists);
-        btnArtists.setBounds(340, 158, 270, 110);
+        jLabelUsername.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelUsername.setText("jLabel1");
 
-        btnGallery.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        btnGallery.setFont(new java.awt.Font("Harrington", 1, 24)); // NOI18N
         btnGallery.setText("Gallery");
         btnGallery.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGalleryActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGallery);
-        btnGallery.setBounds(20, 160, 270, 110);
 
-        jLabel2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 24)); // NOI18N
-        jLabel2.setText("Main Menu (User)");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(220, 70, 207, 40);
-
-        jLabelUsername.setText("jLabel1");
-        getContentPane().add(jLabelUsername);
-        jLabelUsername.setBounds(480, 30, 60, 16);
-
-        jButtonLogout.setText("Logout");
-        jButtonLogout.addActionListener(new java.awt.event.ActionListener() {
+        btnArtists.setFont(new java.awt.Font("Harrington", 1, 24)); // NOI18N
+        btnArtists.setText("Artists");
+        btnArtists.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonLogoutActionPerformed(evt);
+                btnArtistsActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonLogout);
-        jButtonLogout.setBounds(10, 10, 70, 25);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jButtonLogout)
+                .addGap(796, 796, 796)
+                .addComponent(jLabelProfilePic, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(926, 926, 926)
+                .addComponent(jLabelUsername))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(319, 319, 319)
+                .addComponent(jLabel2))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(177, 177, 177)
+                .addComponent(btnGallery, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(97, 97, 97)
+                .addComponent(btnArtists, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jButtonLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelProfilePic, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
+                .addComponent(jLabelUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65)
+                .addComponent(jLabel2)
+                .addGap(117, 117, 117)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnGallery, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnArtists, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 1030, 800);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -252,5 +288,6 @@ public class userMainMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelProfilePic;
     private javax.swing.JLabel jLabelUsername;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
