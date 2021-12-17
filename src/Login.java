@@ -68,7 +68,7 @@ public class Login extends javax.swing.JFrame{
         txtpass.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
 
         buttonLogin.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        buttonLogin.setText("login");
+        buttonLogin.setText("Login");
         buttonLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonLoginActionPerformed(evt);

@@ -1,4 +1,5 @@
 
+import java.awt.Color;
 import java.awt.Image;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -29,6 +30,7 @@ public class artistMainMenu extends javax.swing.JFrame {
     public artistMainMenu() {
         initComponents();
         this.setLocationRelativeTo(null);
+        jPanel1.setBackground(Color.white);
         ImageIcon myImg = new ImageIcon("logo.png");
         Image img = myImg.getImage().getScaledInstance(jLabel1.getWidth(), jLabel1.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon myPicture = new ImageIcon(img);
