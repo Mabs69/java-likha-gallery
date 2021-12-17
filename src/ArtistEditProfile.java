@@ -120,7 +120,7 @@ public class ArtistEditProfile extends javax.swing.JFrame {
         });
 
         btnChangePass.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        btnChangePass.setText("Change password");
+        btnChangePass.setText("Change Password");
         btnChangePass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChangePassActionPerformed(evt);
