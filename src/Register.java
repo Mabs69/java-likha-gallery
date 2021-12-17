@@ -106,14 +106,14 @@ public class Register extends javax.swing.JFrame {
         radioArtist.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         radioArtist.setText("Artist");
         jPanel1.add(radioArtist);
-        radioArtist.setBounds(90, 90, 60, 23);
+        radioArtist.setBounds(90, 90, 63, 25);
 
         radioUser.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(radioUser);
         radioUser.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         radioUser.setText("User");
         jPanel1.add(radioUser);
-        radioUser.setBounds(150, 90, 51, 23);
+        radioUser.setBounds(150, 90, 55, 25);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel6.setText("Profile");
@@ -138,7 +138,7 @@ public class Register extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnUpload);
-        btnUpload.setBounds(430, 380, 82, 33);
+        btnUpload.setBounds(430, 380, 81, 33);
 
         jLabelLoginHere.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 12)); // NOI18N
         jLabelLoginHere.setForeground(new java.awt.Color(0, 51, 255));
@@ -189,12 +189,14 @@ public class Register extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 637, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1047, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 813, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
