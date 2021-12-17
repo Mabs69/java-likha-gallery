@@ -3,12 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Francis/Documents/NetBeansProjects/FinalOutput/java-likha-gallery/src/artistDescription.java</file>
             <file>file:/C:/Users/Francis/Documents/NetBeansProjects/FinalOutput/java-likha-gallery/src/allArtsView.java</file>
             <file>file:/C:/Users/Francis/Documents/NetBeansProjects/FinalOutput/java-likha-gallery/src/Queries.java</file>
             <file>file:/C:/Users/Francis/Documents/NetBeansProjects/FinalOutput/java-likha-gallery/src/Register.java</file>
             <file>file:/C:/Users/Francis/Documents/NetBeansProjects/FinalOutput/java-likha-gallery/src/artistList.java</file>
             <file>file:/C:/Users/Francis/Documents/NetBeansProjects/FinalOutput/java-likha-gallery/src/Login.java</file>
+=======
+            <file>file:/C:/Users/Keans%20Erol%20Austria/Desktop/Java-Likha-Gallery/java-likha-gallery/src/Login.java</file>
+            <file>file:/C:/Users/Keans%20Erol%20Austria/Desktop/Java-Likha-Gallery/java-likha-gallery/src/Queries.java</file>
+            <file>file:/C:/Users/Keans%20Erol%20Austria/Desktop/Java-Likha-Gallery/java-likha-gallery/src/addGallery.java</file>
+            <file>file:/C:/Users/Keans%20Erol%20Austria/Desktop/Java-Likha-Gallery/java-likha-gallery/src/ArtistEditProfile.java</file>
+            <file>file:/C:/Users/Keans%20Erol%20Austria/Desktop/Java-Likha-Gallery/java-likha-gallery/src/artistMainMenu.java</file>
+            <file>file:/C:/Users/Keans%20Erol%20Austria/Desktop/Java-Likha-Gallery/java-likha-gallery/src/userMainMenu.java</file>
+>>>>>>> 2555ed58cf58a513a61736e058d4c20023deff43
         </group>
     </open-files>
 </project-private>

@@ -4,10 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -24,6 +26,8 @@ public class userMainMenu extends javax.swing.JFrame {
     /**
      * Creates new form userMainMenu
      */
+    
+    ResultSet rsA;
     public userMainMenu() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -141,23 +145,71 @@ public class userMainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelProfilePicMouseClicked
 
     private void btnGalleryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGalleryActionPerformed
-        allArtsView aav = new allArtsView();
-        aav.setVisible(true);
-        aav.pack();
-        aav.setLocationRelativeTo(null);
-        aav.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose();
+        
+        if (checkArts()) {
+            allArtsView aav = new allArtsView();
+            aav.setVisible(true);
+            aav.pack();
+            aav.setLocationRelativeTo(null);
+            aav.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "NO ARTS");
+        }
     }//GEN-LAST:event_btnGalleryActionPerformed
 
     private void btnArtistsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArtistsActionPerformed
-       artistList al = new artistList();
-       al.setVisible(true);
-       al.pack();
-       al.setLocationRelativeTo(null);
-       al.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-       this.dispose();
+       
+        
+       if (checkArtist()) {
+           artistList al = new artistList();
+        al.setVisible(true);
+        al.pack();
+        al.setLocationRelativeTo(null);
+        al.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+       } else {
+           JOptionPane.showMessageDialog(null, "NO ARTIST");
+       }
     }//GEN-LAST:event_btnArtistsActionPerformed
 
+    private boolean checkArtist() {
+        boolean c = false;
+        
+        Connection con = myConnection.getConnection(); 
+        try {
+            Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            rsA = st.executeQuery("SELECT * FROM artist");
+     
+            if(rsA.next()) {
+                c = true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(allArtsView.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+        
+        return c;
+    }
+    private boolean checkArts(){
+        boolean c = false;
+        
+        Connection con = myConnection.getConnection(); 
+        try {
+            Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            rsA = st.executeQuery("SELECT * FROM art");
+     
+            if(rsA.next()) {
+                c = true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(allArtsView.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+        
+        return c;
+    }
+    
     /**
      * @param args the command line arguments
      */
