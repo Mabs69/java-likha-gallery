@@ -75,8 +75,6 @@ public class artistMainMenu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
         jLabel2.setFont(new java.awt.Font("Harrington", 1, 48)); // NOI18N
         jLabel2.setText("Main Menu (Artist)");
 
