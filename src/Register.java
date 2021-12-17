@@ -234,6 +234,11 @@ public class Register extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnRegisterActionPerformed
 
+    private boolean isUsernameValid(){
+        
+        return true;
+    }
+    
     private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
         uploadFunction uf = new uploadFunction();
         imagePath = uf.browseImage(jLabelImage);
