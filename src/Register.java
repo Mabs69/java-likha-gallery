@@ -64,63 +64,63 @@ public class Register extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         jLabel4.setText("Register to Art Gallery");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(190, 0, 265, 29);
+        jLabel4.setBounds(230, 0, 550, 58);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Username");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(20, 130, 290, 17);
+        jLabel1.setBounds(120, 180, 290, 29);
 
-        txtUsername.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtUsername.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jPanel1.add(txtUsername);
-        txtUsername.setBounds(20, 150, 290, 30);
+        txtUsername.setBounds(120, 220, 370, 30);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setText("Password");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(20, 190, 290, 17);
+        jLabel2.setBounds(120, 280, 290, 29);
 
         txtPassword.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPanel1.add(txtPassword);
-        txtPassword.setBounds(20, 210, 290, 30);
+        txtPassword.setBounds(120, 310, 370, 30);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel3.setText("Re-Type Password");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(20, 250, 290, 17);
+        jLabel3.setBounds(120, 380, 290, 29);
 
-        txtRetypePassword.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtRetypePassword.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jPanel1.add(txtRetypePassword);
-        txtRetypePassword.setBounds(20, 270, 290, 30);
+        txtRetypePassword.setBounds(120, 420, 370, 30);
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel5.setText("Account Type");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(100, 70, 100, 17);
+        jLabel5.setBounds(150, 90, 180, 29);
 
         radioArtist.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(radioArtist);
-        radioArtist.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        radioArtist.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         radioArtist.setText("Artist");
         jPanel1.add(radioArtist);
-        radioArtist.setBounds(90, 90, 60, 23);
+        radioArtist.setBounds(130, 120, 83, 37);
 
         radioUser.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(radioUser);
-        radioUser.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        radioUser.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         radioUser.setText("User");
         jPanel1.add(radioUser);
-        radioUser.setBounds(150, 90, 51, 23);
+        radioUser.setBounds(250, 120, 77, 37);
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel6.setText("Profile");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(430, 100, 71, 22);
+        jLabel6.setBounds(530, 120, 100, 29);
 
-        btnRegister.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnRegister.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnRegister.setText("Register");
         btnRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,9 +128,9 @@ public class Register extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnRegister);
-        btnRegister.setBounds(210, 440, 201, 33);
+        btnRegister.setBounds(520, 620, 201, 33);
 
-        btnUpload.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnUpload.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnUpload.setText("Upload");
         btnUpload.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,9 +138,9 @@ public class Register extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnUpload);
-        btnUpload.setBounds(430, 380, 82, 33);
+        btnUpload.setBounds(710, 440, 117, 33);
 
-        jLabelLoginHere.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 12)); // NOI18N
+        jLabelLoginHere.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 14)); // NOI18N
         jLabelLoginHere.setForeground(new java.awt.Color(0, 51, 255));
         jLabelLoginHere.setText("Click Here");
         jLabelLoginHere.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -150,32 +150,32 @@ public class Register extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jLabelLoginHere);
-        jLabelLoginHere.setBounds(290, 500, 60, 20);
+        jLabelLoginHere.setBounds(590, 690, 80, 20);
 
         jLabelImage.setForeground(new java.awt.Color(153, 153, 153));
         jLabelImage.setName(""); // NOI18N
         jPanel1.add(jLabelImage);
-        jLabelImage.setBounds(330, 140, 260, 230);
+        jLabelImage.setBounds(540, 160, 290, 260);
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel7.setText("Last Name");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(20, 370, 298, 17);
+        jLabel7.setBounds(120, 600, 298, 29);
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel8.setText("First Name");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(20, 310, 298, 17);
+        jLabel8.setBounds(120, 490, 298, 29);
 
-        txtLName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtLName.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jPanel1.add(txtLName);
-        txtLName.setBounds(20, 390, 290, 30);
+        txtLName.setBounds(120, 640, 370, 30);
 
-        txtFName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtFName.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jPanel1.add(txtFName);
-        txtFName.setBounds(20, 330, 290, 30);
+        txtFName.setBounds(120, 530, 370, 30);
 
-        jLabelLoginHere1.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 12)); // NOI18N
+        jLabelLoginHere1.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 14)); // NOI18N
         jLabelLoginHere1.setText("Already have an account?");
         jLabelLoginHere1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -183,18 +183,20 @@ public class Register extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jLabelLoginHere1);
-        jLabelLoginHere1.setBounds(250, 480, 140, 20);
+        jLabelLoginHere1.setBounds(540, 660, 180, 20);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 637, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1047, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 813, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 

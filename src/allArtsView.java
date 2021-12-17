@@ -39,7 +39,6 @@ public class allArtsView extends javax.swing.JFrame {
         
         fillCombo();
         jComboBox1.setSelectedItem(id);
-        selectFilter();
     }
     
     public allArtsView() {

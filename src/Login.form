@@ -43,59 +43,76 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace pref="284" max="32767" attributes="0"/>
+                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="203" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="162" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace pref="122" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                                              <Component id="jLabelCreateAccount1" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="buttonLogin" min="-2" pref="160" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="155" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="jLabelCreateAccount" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="196" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel2" min="-2" pref="132" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jLabel1" pref="290" max="32767" attributes="0"/>
-                                  <Component id="jLabel2" max="32767" attributes="0"/>
-                                  <Component id="txtuser" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtpass" max="32767" attributes="0"/>
+                                  <Component id="txtuser" max="32767" attributes="0"/>
+                                  <Component id="txtpass" min="-2" pref="444" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
-                          <Component id="buttonLogin" min="-2" pref="160" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="133" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabelCreateAccount1" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                                  <Component id="jLabelCreateAccount" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
+                      <Component id="JLabelLogo" min="-2" pref="480" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="59" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="txtuser" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txtpass" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="JLabelLogo" min="-2" pref="379" max="-2" attributes="0"/>
+                  <EmptySpace pref="58" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtuser" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="txtpass" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                   <Component id="buttonLogin" min="-2" pref="33" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jLabelCreateAccount1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabelCreateAccount" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -104,7 +121,7 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="14" style="1"/>
+              <Font name="Tahoma" size="24" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Username"/>
           </Properties>
@@ -112,7 +129,7 @@
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="14" style="1"/>
+              <Font name="Tahoma" size="24" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Password"/>
           </Properties>
@@ -120,21 +137,21 @@
         <Component class="javax.swing.JTextField" name="txtuser">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="14" style="0"/>
+              <Font name="Tahoma" size="24" style="0"/>
             </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JPasswordField" name="txtpass">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="14" style="0"/>
+              <Font name="Tahoma" size="24" style="0"/>
             </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="buttonLogin">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="14" style="1"/>
+              <Font name="Tahoma" size="24" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="login"/>
           </Properties>
@@ -145,7 +162,7 @@
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="24" style="1"/>
+              <Font name="Tahoma" size="48" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="LIKHAIN ART GALLERY"/>
           </Properties>
@@ -153,7 +170,7 @@
         <Component class="javax.swing.JLabel" name="jLabelCreateAccount">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Microsoft Sans Serif" size="12" style="0"/>
+              <Font name="Microsoft Sans Serif" size="14" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="33" red="33" type="rgb"/>
@@ -170,13 +187,18 @@
         <Component class="javax.swing.JLabel" name="jLabelCreateAccount1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Microsoft Sans Serif" size="12" style="0"/>
+              <Font name="Microsoft Sans Serif" size="14" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Don&apos;t have an account?"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabelCreateAccount1MouseClicked"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="JLabelLogo">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="jLabel3"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
