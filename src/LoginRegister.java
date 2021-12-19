@@ -47,16 +47,18 @@ public class LoginRegister extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(48, 71, 94));
         jPanel1.setPreferredSize(new java.awt.Dimension(1045, 806));
 
-        btnLogin.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        btnLogin.setText("LOGIN");
+        btnLogin.setBackground(new java.awt.Color(247, 159, 36));
+        btnLogin.setFont(new java.awt.Font("Candara", 0, 24)); // NOI18N
+        btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginActionPerformed(evt);
             }
         });
 
-        btnRegister.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        btnRegister.setText("REGISTER");
+        btnRegister.setBackground(new java.awt.Color(247, 159, 36));
+        btnRegister.setFont(new java.awt.Font("Candara", 0, 24)); // NOI18N
+        btnRegister.setText("Register");
         btnRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegisterActionPerformed(evt);
@@ -67,6 +69,7 @@ public class LoginRegister extends javax.swing.JFrame {
         jLabel1.setText("--OR--");
 
         jLabel2.setFont(new java.awt.Font("Harrington", 1, 48)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(200, 198, 198));
         jLabel2.setText("LIKHAIN ART GALLERY");
 
         jLabel3.setText("LOGO");

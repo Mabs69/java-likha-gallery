@@ -24,7 +24,7 @@ public class Register extends javax.swing.JFrame {
     
     public Register() {
         initComponents();
-        jPanel1.setBackground(Color.white);
+        jPanel1.setBackground(new Color(48,71,94));
         this.setLocationRelativeTo(null);
         
     }
@@ -64,45 +64,52 @@ public class Register extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 255, 153));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(48, 71, 94));
         jPanel1.setForeground(new java.awt.Color(102, 255, 102));
         jPanel1.setPreferredSize(new java.awt.Dimension(1045, 806));
 
         jLabel4.setFont(new java.awt.Font("Harrington", 1, 48)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(200, 198, 198));
         jLabel4.setText("Register to Art Gallery");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(200, 198, 198));
         jLabel1.setText("Username");
 
-        txtUsername.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        txtUsername.setFont(new java.awt.Font("Candara", 0, 24)); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(200, 198, 198));
         jLabel2.setText("Password");
 
-        txtPassword.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtPassword.setFont(new java.awt.Font("Candara", 0, 24)); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(200, 198, 198));
         jLabel3.setText("Re-Type Password");
 
-        txtRetypePassword.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        txtRetypePassword.setFont(new java.awt.Font("Candara", 0, 24)); // NOI18N
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(200, 198, 198));
         jLabel5.setText("Account Type");
 
-        radioArtist.setBackground(new java.awt.Color(255, 255, 255));
+        radioArtist.setBackground(new java.awt.Color(48, 71, 94));
         buttonGroup1.add(radioArtist);
         radioArtist.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         radioArtist.setText("Artist");
 
-        radioUser.setBackground(new java.awt.Color(255, 255, 255));
+        radioUser.setBackground(new java.awt.Color(48, 71, 94));
         buttonGroup1.add(radioUser);
         radioUser.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         radioUser.setText("User");
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(200, 198, 198));
         jLabel6.setText("Profile");
 
-        btnRegister.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btnRegister.setBackground(new java.awt.Color(247, 159, 36));
+        btnRegister.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
         btnRegister.setText("Register");
         btnRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,7 +117,8 @@ public class Register extends javax.swing.JFrame {
             }
         });
 
-        btnUpload.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btnUpload.setBackground(new java.awt.Color(247, 159, 36));
+        btnUpload.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
         btnUpload.setText("Upload");
         btnUpload.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,18 +136,21 @@ public class Register extends javax.swing.JFrame {
             }
         });
 
+        jLabelImage.setBackground(new java.awt.Color(200, 198, 198));
         jLabelImage.setForeground(new java.awt.Color(153, 153, 153));
         jLabelImage.setName(""); // NOI18N
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(200, 198, 198));
         jLabel7.setText("Last Name");
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(200, 198, 198));
         jLabel8.setText("First Name");
 
-        txtLName.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        txtLName.setFont(new java.awt.Font("Candara", 0, 24)); // NOI18N
 
-        txtFName.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        txtFName.setFont(new java.awt.Font("Candara", 0, 24)); // NOI18N
 
         jLabelLoginHere1.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 14)); // NOI18N
         jLabelLoginHere1.setText("Already have an account?");
@@ -248,7 +259,7 @@ public class Register extends javax.swing.JFrame {
                         .addComponent(jLabelLoginHere1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(10, 10, 10)
                 .addComponent(jLabelLoginHere, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

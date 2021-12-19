@@ -55,20 +55,23 @@ public class Login extends javax.swing.JFrame{
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(48, 71, 94));
         jPanel1.setPreferredSize(new java.awt.Dimension(1045, 806));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Username");
+        jLabel1.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(200, 198, 198));
+        jLabel1.setText("Username:");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel2.setText("Password");
+        jLabel2.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(200, 198, 198));
+        jLabel2.setText("Password:");
 
-        txtuser.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        txtuser.setFont(new java.awt.Font("Candara", 0, 24)); // NOI18N
 
-        txtpass.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        txtpass.setFont(new java.awt.Font("Candara", 0, 24)); // NOI18N
 
-        buttonLogin.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        buttonLogin.setBackground(new java.awt.Color(247, 159, 36));
+        buttonLogin.setFont(new java.awt.Font("Candara", 0, 24)); // NOI18N
         buttonLogin.setText("Login");
         buttonLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,6 +80,7 @@ public class Login extends javax.swing.JFrame{
         });
 
         jLabel4.setFont(new java.awt.Font("Harrington", 1, 48)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(200, 198, 198));
         jLabel4.setText("LIKHAIN ART GALLERY");
 
         jLabelCreateAccount.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 14)); // NOI18N
@@ -90,6 +94,7 @@ public class Login extends javax.swing.JFrame{
         });
 
         jLabelCreateAccount1.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 14)); // NOI18N
+        jLabelCreateAccount1.setForeground(new java.awt.Color(200, 198, 198));
         jLabelCreateAccount1.setText("Don't have an account?");
         jLabelCreateAccount1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -104,7 +109,7 @@ public class Login extends javax.swing.JFrame{
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(250, Short.MAX_VALUE)
+                .addContainerGap(262, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addGap(203, 203, 203))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -142,7 +147,7 @@ public class Login extends javax.swing.JFrame{
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(JLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtuser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -166,15 +171,11 @@ public class Login extends javax.swing.JFrame{
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1033, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 793, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
