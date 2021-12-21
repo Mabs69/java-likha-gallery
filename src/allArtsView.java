@@ -1,4 +1,5 @@
 
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -36,6 +37,7 @@ public class allArtsView extends javax.swing.JFrame {
     public allArtsView(String id) {
         initComponents();
         this.setLocationRelativeTo(null);
+        
         
         fillCombo();
         jComboBox1.setSelectedItem(id);
