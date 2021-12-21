@@ -42,6 +42,8 @@ public class editArt extends javax.swing.JFrame {
         txtName.setText(n);
         txtDesc.setText(d);
         lblPic.setIcon(new uploadFunction().resizePic(null, img, lblPic.getWidth(), lblPic.getHeight()));
+        
+        this.getContentPane().setBackground(new Color(48,71,94));
     }
 
     /**
