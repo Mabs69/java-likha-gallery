@@ -286,6 +286,8 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelLoginHereMouseClicked
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
+        
+        // check if fields are empty
         if(verifData()) {
             try {
                 String u = txtUsername.getText();
@@ -297,19 +299,27 @@ public class Register extends javax.swing.JFrame {
                 Path path = Paths.get(imagePath);
                 byte[] img = Files.readAllBytes(path);
                 
-                Queries q = new Queries();
-                q.insertRegister(u, p, f, l, t, img);
+                if (!isUsernameValid(f, l)) {
+                    Queries q = new Queries();
+                    q.insertRegister(u, p, f, l, t, img);
                 
-                loginPage(); 
+                    loginPage();
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Invalid name. Name must not contain any numbers");
+                }
             } catch (IOException ex) {
                 Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_btnRegisterActionPerformed
 
-    private boolean isUsernameValid(){
+    private boolean isUsernameValid(String f, String l){
         
-        return true;
+        if (f.matches(".*\\d.*") || l.matches(".*\\d.*"))
+            return true;
+        
+        return false;
     }
     
     private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
