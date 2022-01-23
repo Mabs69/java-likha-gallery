@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -19,9 +20,8 @@ import javax.swing.JFrame;
  */
 public class artistMainMenu extends javax.swing.JFrame {
 
-    /**
-     * Creates new form artistMainMenu
-     */
+    ResultSet rs1;
+    
     public artistMainMenu() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -58,9 +58,9 @@ public class artistMainMenu extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabelProfilePic = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnMyGallery = new javax.swing.JButton();
+        btnArtists = new javax.swing.JButton();
+        btnAllGallery = new javax.swing.JButton();
         jLabelUsername = new javax.swing.JLabel();
         jButtonLogout = new javax.swing.JButton();
 
@@ -80,17 +80,27 @@ public class artistMainMenu extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
-        jButton2.setText("My Gallery");
-
-        jButton3.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
-        jButton3.setText("Artists");
-
-        jButton4.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
-        jButton4.setText("Gallery");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnMyGallery.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        btnMyGallery.setText("My Gallery");
+        btnMyGallery.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnMyGalleryActionPerformed(evt);
+            }
+        });
+
+        btnArtists.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        btnArtists.setText("Artists");
+        btnArtists.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnArtistsActionPerformed(evt);
+            }
+        });
+
+        btnAllGallery.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        btnAllGallery.setText("Gallery");
+        btnAllGallery.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAllGalleryActionPerformed(evt);
             }
         });
 
@@ -117,11 +127,11 @@ public class artistMainMenu extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jButton2)
+                .addComponent(btnMyGallery)
                 .addGap(48, 48, 48)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAllGallery, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnArtists, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(61, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -140,9 +150,9 @@ public class artistMainMenu extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnArtists, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAllGallery, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnMyGallery, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(57, 57, 57))
         );
 
@@ -172,14 +182,14 @@ public class artistMainMenu extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButtonLogoutActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnAllGalleryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAllGalleryActionPerformed
         allArtsView aav = new allArtsView();
         aav.setVisible(true);
         aav.pack();
         aav.setLocationRelativeTo(null);
         aav.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.dispose();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnAllGalleryActionPerformed
 
     private void jLabelProfilePicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelProfilePicMouseClicked
         ArtistProfile a = new ArtistProfile();
@@ -190,7 +200,50 @@ public class artistMainMenu extends javax.swing.JFrame {
         a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }//GEN-LAST:event_jLabelProfilePicMouseClicked
 
+    private void btnArtistsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArtistsActionPerformed
+       artistList al = new artistList();
+       al.setVisible(true);
+       al.pack();
+       al.setLocationRelativeTo(null);
+       al.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       this.dispose();
+    }//GEN-LAST:event_btnArtistsActionPerformed
 
+    private void btnMyGalleryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMyGalleryActionPerformed
+        Queries q = new Queries();
+        rs1 = q.getMyGallery(Login.currentArtistID);
+        try {
+            if(rs1.next()) 
+                myGallery();
+            else {
+                int c = JOptionPane.showConfirmDialog(null, "You have no Art yet. Add art now?", "Art", JOptionPane.YES_NO_OPTION);
+                if (c == JOptionPane.YES_OPTION) 
+                    addGallery();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(artistMainMenu.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+    }//GEN-LAST:event_btnMyGalleryActionPerformed
+
+    public void myGallery() {
+        ArtistGalleryView agv = new ArtistGalleryView();
+        agv.setVisible(true);
+        agv.pack();
+        agv.setLocationRelativeTo(null);
+        agv.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }
+    
+    public void addGallery() {
+        addGallery al = new addGallery();
+        al.setVisible(true);
+        al.pack();
+        al.setLocationRelativeTo(null);
+        al.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -227,9 +280,9 @@ public class artistMainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnAllGallery;
+    private javax.swing.JButton btnArtists;
+    private javax.swing.JButton btnMyGallery;
     private javax.swing.JButton jButtonLogout;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelProfilePic;

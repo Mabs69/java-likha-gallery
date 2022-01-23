@@ -1,12 +1,9 @@
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -59,13 +56,15 @@ public class Queries {
             }
     }
     
-    public void userLogin(String u, String p) {
+    public boolean userLogin(String u, String p) {
         Connection con = myConnection.getConnection();
         PreparedStatement ps;
         ResultSet rs;
         
         PreparedStatement ps1;
         ResultSet rs1;
+        
+        boolean user = false;
         
         try {
             ps = con.prepareStatement("SELECT `username`, `password` FROM `registration` WHERE `username` = ? AND `password` = ?");
@@ -79,25 +78,33 @@ public class Queries {
                 ps1.setString(2, "artist");
                 rs1 = ps1.executeQuery();
                 
+                Login.currentUserID = getCurrentUserID(u);
+                Login.currentArtistID = getCurrentArtistID(Login.currentUserID);
+
                 if (rs1.next()){
                     artistMainMenu a = new artistMainMenu();
                     a.setVisible(true);
                     a.pack();
                     a.setLocationRelativeTo(null);
                     a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    user = true;
                 } else { 
                     userMainMenu mm = new userMainMenu();
                     mm.setVisible(true);
                     mm.pack();
                     mm.setLocationRelativeTo(null);
                     mm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    user = true;
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Invalid credentials.");
+                user = false;
             }
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        return user;
     }
     
     public boolean isUsernameExist(String un) {
@@ -160,7 +167,30 @@ public class Queries {
             rs = ps.executeQuery();
             
             if(rs.next()) {
-                u = rs.getInt("user_id");
+                u = rs.getInt(1);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return u;
+    }
+    
+    public int getCurrentArtistID(int uid) {
+        int u = 0;
+        Connection con = myConnection.getConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+        
+        try {
+            ps = con.prepareStatement("SELECT artist_id FROM artist WHERE user_id = ?");
+            ps.setInt(1, uid);
+            
+            rs = ps.executeQuery();
+            
+            if(rs.next()) {
+                u = rs.getInt(1);
             }
             
         } catch (SQLException ex) {
@@ -271,6 +301,98 @@ public class Queries {
             System.out.println(ex.getMessage());
         }
         return path;
+    }
+    
+    public ResultSet getMyGallery(int aid) {
+        Connection con = myConnection.getConnection();
+        ResultSet rs = null;
+        
+        try {
+            Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            rs = st.executeQuery("SELECT * FROM art WHERE artist_id = "+aid); 
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+        return rs;
+    }
+    
+    public void addGallery(String n, String d, byte[] img, int aid) {
+        Connection con = myConnection.getConnection();
+        PreparedStatement ps;
+        
+        try {
+            ps = con.prepareStatement("INSERT INTO art (artist_id, art_name, art_desc, art_img) VALUES (?,?,?,?)");
+            ps.setInt(1, aid);
+            ps.setString(2, n);
+            ps.setString(3, d);
+            ps.setBytes(4, img);
+            
+            if(ps.executeUpdate() != 0) {
+                JOptionPane.showMessageDialog(null, "Art Added to Your Gallery.");
+                artistMainMenu a = new artistMainMenu();
+                a.setVisible(true);
+                a.pack();
+                a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                a.setLocationRelativeTo(null);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void editArt1(String n, String d, byte[] i, int aid, String cn) {
+        Connection con = myConnection.getConnection();
+        PreparedStatement ps;
+        
+        try {
+            ps = con.prepareStatement("UPDATE art SET art_name = ?, art_desc = ?, art_img = ? WHERE artist_id = ? and art_name = ?");
+            ps.setString(1, n);
+            ps.setString(2, d);
+            ps.setBytes(3, i);
+            ps.setInt(4, aid);
+            ps.setString(5, cn);
+            
+            if(ps.executeUpdate() != 0) 
+                JOptionPane.showMessageDialog(null, "Art Name: "+cn+" Successfully Updated");          
+        } catch (SQLException ex) {
+            Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void editArt2 (String n, String d, int aid, String cn) {
+        Connection con = myConnection.getConnection();
+        PreparedStatement ps;
+        
+        try {
+            ps = con.prepareStatement("UPDATE art SET art_name = ?, art_desc = ? WHERE artist_id = ? and art_name = ?");
+            ps.setString(1, n);
+            ps.setString(2, d);
+            ps.setInt(3, aid);
+            ps.setString(4, cn);
+            
+            if(ps.executeUpdate() != 0) 
+                JOptionPane.showMessageDialog(null, "Art Name: "+cn+" Successfully Updated");          
+        } catch (SQLException ex) {
+            Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void deleteArt(String n, int aid) {
+        Connection con = myConnection.getConnection();
+        PreparedStatement ps;
+        
+        try {
+            ps = con.prepareStatement("DELETE FROM art WHERE art_name = ? and artist_id = ?");
+            ps.setString(1, n);
+            ps.setInt(2, aid);
+            
+            if(ps.executeUpdate() != 0)
+                JOptionPane.showMessageDialog(null, "Art: "+n+" is deleted");               
+        } catch (SQLException ex) {
+            Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
 

@@ -11,10 +11,12 @@ import javax.swing.JOptionPane;
  *
  * @author Keans Erol Austria
  */
-public class Login extends javax.swing.JFrame {
+public class Login extends javax.swing.JFrame{
 
     public static String currentUsername;
     public static String currentUserType;
+    public static int currentUserID;
+    public static int currentArtistID;
     
     /**
      * Creates new form Login
@@ -166,8 +168,10 @@ public class Login extends javax.swing.JFrame {
             
             Queries q = new Queries();
             currentUserType = q.getUserType(u);
-            q.userLogin(u, p);
-            this.dispose();
+            
+            if (q.userLogin(u,p))
+                this.dispose();
+            
         }
     }//GEN-LAST:event_buttonLoginActionPerformed
 
@@ -176,7 +180,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelCreateAccount1MouseClicked
 
     public boolean emptyChecker() {
-        if (txtuser.getText().isEmpty() && txtpass.getText().isEmpty()) {
+        if (txtuser.getText().isEmpty() || txtpass.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please fill up all required fields");
             return false;
         }

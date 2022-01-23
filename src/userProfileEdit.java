@@ -170,6 +170,7 @@ public class userProfileEdit extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonUploadActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        
         if(verifData()) {
             try {
                 Queries q = new Queries();

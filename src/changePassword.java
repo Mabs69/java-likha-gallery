@@ -157,6 +157,7 @@ public class changePassword extends javax.swing.JFrame {
                 Queries q = new Queries();
                 if(q.verifyCurrentPassword(u, pc)) {
                     q.updatePassword(u, pn);
+                    
                     back();
                 }
             }
@@ -184,13 +185,24 @@ public class changePassword extends javax.swing.JFrame {
             return false;
         }
     }
+    
     public void back() {
-        userProfileEdit up = new userProfileEdit();
-        up.setVisible(true);
-        up.pack();
-        up.setLocationRelativeTo(null);
-        up.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose();
+        
+        if (Login.currentUserType.equals("artist")) {
+            ArtistProfile a = new ArtistProfile();
+            a.pack();
+            a.setVisible(true);
+            a.setLocationRelativeTo(null);
+            a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            this.dispose();
+        } else if (Login.currentUserType.equals("user")) {
+            userProfileEdit up = new userProfileEdit();
+            up.setVisible(true);
+            up.pack();
+            up.setLocationRelativeTo(null);
+            up.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            this.dispose();
+        }
     }
     
     /**
