@@ -1,9 +1,11 @@
 
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -22,13 +24,36 @@ import javax.swing.JOptionPane;
 public class allArtsView extends javax.swing.JFrame {
       
     ResultSet rsA;
+    ResultSet rsUID;
+    ResultSet rsAr;
+    private int aid;
+    private int uid;
+    private String fname;
+    private String lname;
+    
+    Queries q = new Queries();
+    ArrayList artists = q.ArtistList();
+    
+    public allArtsView(String id) {
+        initComponents();
+        this.setLocationRelativeTo(null);
+         this.getContentPane().setBackground(new Color(48,71,94));
+        
+        
+        fillCombo();
+        jComboBox1.setSelectedItem(id);
+    }
     
     public allArtsView() {
         initComponents();
+        
         this.setLocationRelativeTo(null);
-
+        this.getContentPane().setBackground(new Color(48,71,94));
         getArt();
-        nextArt();   
+        getArtistName();
+        fillCombo();
+        
+        
     }
 
     /**
@@ -48,19 +73,30 @@ public class allArtsView extends javax.swing.JFrame {
         btnBack = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
         btnPrev = new javax.swing.JButton();
+        lbArtistName = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1045, 806));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Harrington", 1, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(200, 198, 198));
         jLabel1.setText("GALLERY");
 
-        lblName.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblName.setFont(new java.awt.Font("Candara", 0, 24)); // NOI18N
+        lblName.setForeground(new java.awt.Color(200, 198, 198));
+        lblName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblName.setText("NAME");
 
+        lblDesc.setEditable(false);
         lblDesc.setColumns(20);
+        lblDesc.setFont(new java.awt.Font("Candara", 0, 24)); // NOI18N
         lblDesc.setRows(5);
         jScrollPane1.setViewportView(lblDesc);
 
+        btnBack.setBackground(new java.awt.Color(247, 159, 36));
+        btnBack.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,19 +104,45 @@ public class allArtsView extends javax.swing.JFrame {
             }
         });
 
-        btnNext.setText("NEXT");
+        btnNext.setBackground(new java.awt.Color(247, 159, 36));
+        btnNext.setFont(new java.awt.Font("Candara", 0, 24)); // NOI18N
+        btnNext.setText("Next");
         btnNext.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNextActionPerformed(evt);
             }
         });
 
+        btnPrev.setBackground(new java.awt.Color(247, 159, 36));
+        btnPrev.setFont(new java.awt.Font("Candara", 0, 24)); // NOI18N
         btnPrev.setText("Previous");
         btnPrev.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPrevActionPerformed(evt);
             }
         });
+
+        lbArtistName.setFont(new java.awt.Font("Candara", 0, 24)); // NOI18N
+        lbArtistName.setForeground(new java.awt.Color(200, 198, 198));
+        lbArtistName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbArtistName.setText("Artist");
+        lbArtistName.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lbArtistName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbArtistNameMouseClicked(evt);
+            }
+        });
+
+        jComboBox1.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Candara", 0, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(200, 198, 198));
+        jLabel2.setText("Filter Artist:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -90,47 +152,59 @@ public class allArtsView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(btnBack)
-                        .addGap(199, 199, 199)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
                         .addComponent(btnPrev)
+                        .addGap(42, 42, 42)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE)
+                            .addComponent(lblPic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
-                        .addComponent(lblPic, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnNext))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(160, 160, 160)
-                        .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnBack)
+                        .addGap(335, 335, 335)
+                        .addComponent(jLabel1)))
+                .addContainerGap(38, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                .addComponent(btnNext)
-                .addGap(20, 20, 20))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbArtistName, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(367, 367, 367))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(349, 349, 349))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(btnBack))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnBack)
+                        .addGap(214, 214, 214)
+                        .addComponent(btnPrev))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(lblPic, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblPic, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(138, 138, 138)
-                        .addComponent(btnNext))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(139, 139, 139)
-                        .addComponent(btnPrev)))
-                .addGap(18, 18, 18)
+                        .addGap(255, 255, 255)
+                        .addComponent(btnNext)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblName)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addComponent(lbArtistName)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         pack();
@@ -138,13 +212,148 @@ public class allArtsView extends javax.swing.JFrame {
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         nextArt();
+        getArtistName();
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
         previousArt();
+        getArtistName();
     }//GEN-LAST:event_btnPrevActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        back();
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void lbArtistNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbArtistNameMouseClicked
+        artistDescription();
+    }//GEN-LAST:event_lbArtistNameMouseClicked
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        selectFilter();
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+    
+    public void fillCombo()
+    {
+        jComboBox1.addItem("All");
+
+        for(int i=0;i < artists.size(); i++)
+        {
+            jComboBox1.addItem(artists.get(i).toString());
+        }
+    }
+    
+    private void nextArt() {
+        try {
+            if(rsA.next()) {
+                lblPic.setIcon(new uploadFunction().resizePic(null, rsA.getBytes("art_img"), lblPic.getWidth(), lblPic.getHeight()));
+                lblName.setText(rsA.getString("art_name"));
+                lblDesc.setText(rsA.getString("art_desc"));
+                aid = rsA.getInt("artist_id");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(allArtsView.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    private void previousArt() {
+        try {            
+            if(rsA.previous()) {
+                lblPic.setIcon(new uploadFunction().resizePic(null, rsA.getBytes("art_img"), lblPic.getWidth(), lblPic.getHeight()));
+                lblName.setText(rsA.getString("art_name"));
+                lblDesc.setText(rsA.getString("art_desc"));
+                aid = rsA.getInt("artist_id");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(allArtsView.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    private void getArt() {
+        Connection con = myConnection.getConnection(); 
+        try {
+            Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            rsA = st.executeQuery("SELECT * FROM art");
+     
+            if(rsA.next()) {
+                lblPic.setIcon(new uploadFunction().resizePic(null, rsA.getBytes("art_img"), lblPic.getWidth(), lblPic.getHeight()));
+                lblName.setText(rsA.getString("art_name"));
+                lblDesc.setText(rsA.getString("art_desc"));
+                aid = rsA.getInt("artist_id");
+            }
+//            else {
+//                JOptionPane.showMessageDialog(null, "There are no artworks to show");
+//                back();
+//                this.dispose();
+//            }
+        } catch (SQLException ex) {
+            Logger.getLogger(allArtsView.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    private void getSpecificArts(int uid) {
+        Connection con = myConnection.getConnection(); 
+        try {
+            Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            rsA = st.executeQuery("SELECT * FROM art WHERE artist_id = "+uid+"");
+            
+            if(rsA.next()) {
+                lblPic.setIcon(new uploadFunction().resizePic(null, rsA.getBytes("art_img"), lblPic.getWidth(), lblPic.getHeight()));
+                lblName.setText(rsA.getString("art_name"));
+                lblDesc.setText(rsA.getString("art_desc"));
+                aid = rsA.getInt("artist_id");
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "There are no artworks to show for "+jComboBox1.getSelectedItem().toString());
+                jComboBox1.setSelectedIndex(0);
+                selectFilter();
+            }
+     
+        } catch (SQLException ex) {
+            Logger.getLogger(allArtsView.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    private void selectFilter() {
+        int index = jComboBox1.getSelectedIndex();
+        
+        if(index == 0) {
+            getArt();
+            getArtistName();
+        }
+        else {
+            int value = Integer.parseInt(String.valueOf(jComboBox1.getSelectedItem()).replaceAll("[^0-9]", ""));
+            getSpecificArts(value);
+            getArtistName();
+        }
+    }
+    
+    private void getArtistName() {
+        Connection con = myConnection.getConnection(); 
+        try {
+            Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            rsUID = st.executeQuery("SELECT DISTINCT artist.user_id FROM artist, art WHERE art.artist_id = "+aid+" AND artist.artist_id = "+aid+"");
+            
+            if(rsUID.next()) {
+                uid = rsUID.getInt("user_id");
+                rsAr = st.executeQuery("SELECT fname, lname FROM registration WHERE user_id = "+uid+"");
+                
+                if (rsAr.next()) {
+                    fname = rsAr.getString("fname");
+                    lname = rsAr.getString("lname");
+                    lbArtistName.setText(fname + " " + lname);
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(allArtsView.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    private void back() {
         if(Login.currentUserType.equals("artist")) {        
             artistMainMenu amm = new artistMainMenu();
             amm.setVisible(true);
@@ -161,45 +370,16 @@ public class allArtsView extends javax.swing.JFrame {
             umm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             this.dispose();
         }
-    }//GEN-LAST:event_btnBackActionPerformed
-    
-    private void nextArt() {
-        try {
-            if(rsA.next()) {
-                lblPic.setIcon(new uploadFunction().resizePic(null, rsA.getBytes("art_img"), lblPic.getWidth(), lblPic.getHeight()));
-                lblName.setText(rsA.getString("art_name"));
-                lblDesc.setText(rsA.getString("art_desc"));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(allArtsView.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println(ex.getMessage());
-        }
     }
     
-    private void previousArt() {
-        try {            
-            if(rsA.previous()) {
-                lblPic.setIcon(new uploadFunction().resizePic(null, rsA.getBytes("art_img"), lblPic.getWidth(), lblPic.getHeight()));
-                lblName.setText(rsA.getString("art_name"));
-                lblDesc.setText(rsA.getString("art_desc"));              
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(allArtsView.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println(ex.getMessage());
-        }
+    private void artistDescription() {
+        artistDescription a = new artistDescription(uid);
+        this.dispose();
+        a.pack();
+        a.setVisible(true);
+        a.setLocationRelativeTo(null);
+        a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-    
-    private void getArt() {
-        Connection con = myConnection.getConnection(); 
-        try {
-            Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            rsA = st.executeQuery("SELECT * FROM art");
-     
-        } catch (SQLException ex) {
-            Logger.getLogger(allArtsView.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println(ex.getMessage());
-        }
-    }   
     
     /**
      * @param args the command line arguments
@@ -240,8 +420,11 @@ public class allArtsView extends javax.swing.JFrame {
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnPrev;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbArtistName;
     private javax.swing.JTextArea lblDesc;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblPic;

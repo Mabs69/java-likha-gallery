@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -394,57 +395,28 @@ public class Queries {
             Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-}
-
     
+    public ArrayList ArtistList(){
+    
+    ArrayList artistList = new ArrayList();
 
+    Connection con = myConnection.getConnection();    
+    Statement st;
+    ResultSet rs;
+    try{
+        st = con.createStatement();        
+        rs = st.executeQuery("SELECT a.artist_id, r.fname, r.lname FROM registration r, artist a WHERE a.user_id = r.user_id");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//    RECYCLE BIN
-//    public byte[] getProfilePicture(int u) {
-//        byte[] path = null;
-//        Connection con = myConnection.getConnection();
-//        PreparedStatement ps;
-//        ResultSet rs;
-//        
-//        try {
-//            ps = con.prepareStatement("SELECT `pic` FROM registration WHERE `user_id` = ?");
-//            ps.setInt(1, u);
-//            
-//            rs = ps.executeQuery();
-//            
-//            if(rs.next()) {
-//                path = rs.getBytes("pic");
-//            }
-//            
-//        } catch (SQLException ex) {
-//            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-//            System.out.println(ex.getMessage());
-//        }
-//        return path;
-//    }
-
+        while(rs.next())
+        {
+            String full = rs.getInt("artist_id")+" - "+rs.getString("fname") + " " + rs.getString("lname");
+            artistList.add(full);
+        }
+        
+    }catch(Exception e)
+    {
+        System.out.println(e.getMessage());
+    }
+    return artistList;
+}    
+}

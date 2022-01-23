@@ -1,4 +1,5 @@
 
+import java.awt.Color;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -23,6 +24,7 @@ public class Register extends javax.swing.JFrame {
     
     public Register() {
         initComponents();
+        jPanel1.setBackground(new Color(48,71,94));
         this.setLocationRelativeTo(null);
         
     }
@@ -60,87 +62,71 @@ public class Register extends javax.swing.JFrame {
         jLabelLoginHere1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(153, 255, 153));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(null);
+        jPanel1.setBackground(new java.awt.Color(48, 71, 94));
+        jPanel1.setForeground(new java.awt.Color(102, 255, 102));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1045, 806));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Harrington", 1, 48)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(200, 198, 198));
         jLabel4.setText("Register to Art Gallery");
-        jPanel1.add(jLabel4);
-        jLabel4.setBounds(190, 0, 265, 29);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(200, 198, 198));
         jLabel1.setText("Username");
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(20, 130, 290, 17);
 
-        txtUsername.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel1.add(txtUsername);
-        txtUsername.setBounds(20, 150, 290, 30);
+        txtUsername.setFont(new java.awt.Font("Candara", 0, 24)); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(200, 198, 198));
         jLabel2.setText("Password");
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(20, 190, 290, 17);
 
-        txtPassword.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel1.add(txtPassword);
-        txtPassword.setBounds(20, 210, 290, 30);
+        txtPassword.setFont(new java.awt.Font("Candara", 0, 24)); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(200, 198, 198));
         jLabel3.setText("Re-Type Password");
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(20, 250, 290, 17);
 
-        txtRetypePassword.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel1.add(txtRetypePassword);
-        txtRetypePassword.setBounds(20, 270, 290, 30);
+        txtRetypePassword.setFont(new java.awt.Font("Candara", 0, 24)); // NOI18N
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(200, 198, 198));
         jLabel5.setText("Account Type");
-        jPanel1.add(jLabel5);
-        jLabel5.setBounds(100, 70, 100, 17);
 
-        radioArtist.setBackground(new java.awt.Color(255, 255, 255));
+        radioArtist.setBackground(new java.awt.Color(48, 71, 94));
         buttonGroup1.add(radioArtist);
-        radioArtist.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        radioArtist.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         radioArtist.setText("Artist");
-        jPanel1.add(radioArtist);
-        radioArtist.setBounds(90, 90, 60, 23);
 
-        radioUser.setBackground(new java.awt.Color(255, 255, 255));
+        radioUser.setBackground(new java.awt.Color(48, 71, 94));
         buttonGroup1.add(radioUser);
-        radioUser.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        radioUser.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         radioUser.setText("User");
-        jPanel1.add(radioUser);
-        radioUser.setBounds(150, 90, 51, 23);
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(200, 198, 198));
         jLabel6.setText("Profile");
-        jPanel1.add(jLabel6);
-        jLabel6.setBounds(430, 100, 71, 22);
 
-        btnRegister.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnRegister.setBackground(new java.awt.Color(247, 159, 36));
+        btnRegister.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
         btnRegister.setText("Register");
         btnRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegisterActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRegister);
-        btnRegister.setBounds(210, 440, 201, 33);
 
-        btnUpload.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnUpload.setBackground(new java.awt.Color(247, 159, 36));
+        btnUpload.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
         btnUpload.setText("Upload");
         btnUpload.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUploadActionPerformed(evt);
             }
         });
-        jPanel1.add(btnUpload);
-        btnUpload.setBounds(430, 380, 82, 33);
 
-        jLabelLoginHere.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 12)); // NOI18N
+        jLabelLoginHere.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 14)); // NOI18N
         jLabelLoginHere.setForeground(new java.awt.Color(0, 51, 255));
         jLabelLoginHere.setText("Click Here");
         jLabelLoginHere.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -149,53 +135,142 @@ public class Register extends javax.swing.JFrame {
                 jLabelLoginHereMouseClicked(evt);
             }
         });
-        jPanel1.add(jLabelLoginHere);
-        jLabelLoginHere.setBounds(290, 500, 60, 20);
 
+        jLabelImage.setBackground(new java.awt.Color(200, 198, 198));
         jLabelImage.setForeground(new java.awt.Color(153, 153, 153));
         jLabelImage.setName(""); // NOI18N
-        jPanel1.add(jLabelImage);
-        jLabelImage.setBounds(330, 140, 260, 230);
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(200, 198, 198));
         jLabel7.setText("Last Name");
-        jPanel1.add(jLabel7);
-        jLabel7.setBounds(20, 370, 298, 17);
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(200, 198, 198));
         jLabel8.setText("First Name");
-        jPanel1.add(jLabel8);
-        jLabel8.setBounds(20, 310, 298, 17);
 
-        txtLName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel1.add(txtLName);
-        txtLName.setBounds(20, 390, 290, 30);
+        txtLName.setFont(new java.awt.Font("Candara", 0, 24)); // NOI18N
 
-        txtFName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel1.add(txtFName);
-        txtFName.setBounds(20, 330, 290, 30);
+        txtFName.setFont(new java.awt.Font("Candara", 0, 24)); // NOI18N
 
-        jLabelLoginHere1.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 12)); // NOI18N
+        jLabelLoginHere1.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 14)); // NOI18N
         jLabelLoginHere1.setText("Already have an account?");
         jLabelLoginHere1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelLoginHere1MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabelLoginHere1);
-        jLabelLoginHere1.setBounds(250, 480, 140, 20);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(240, 240, 240)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(150, 150, 150)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(130, 130, 130)
+                        .addComponent(radioArtist)
+                        .addGap(39, 39, 39)
+                        .addComponent(radioUser)
+                        .addGap(205, 205, 205)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtRetypePassword, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(50, 50, 50)
+                        .addComponent(jLabelImage, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addComponent(txtFName, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(300, 300, 300)
+                        .addComponent(btnUpload))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtLName, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(jLabelLoginHere1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(590, 590, 590)
+                        .addComponent(jLabelLoginHere, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(137, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel4)
+                .addGap(32, 32, 32)
+                .addComponent(jLabel5)
+                .addGap(1, 1, 1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(radioArtist)
+                    .addComponent(radioUser)
+                    .addComponent(jLabel6))
+                .addGap(3, 3, 3)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel1)
+                        .addGap(11, 11, 11)
+                        .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel2)
+                        .addGap(1, 1, 1)
+                        .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel3)
+                        .addGap(11, 11, 11)
+                        .addComponent(txtRetypePassword, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel8))
+                    .addComponent(jLabelImage, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtFName, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(btnUpload, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(11, 11, 11)
+                        .addComponent(txtLName, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(7, 7, 7)
+                        .addComponent(jLabelLoginHere1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(10, 10, 10)
+                .addComponent(jLabelLoginHere, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(101, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 637, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1047, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 813, Short.MAX_VALUE)
         );
 
         pack();
@@ -211,6 +286,8 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelLoginHereMouseClicked
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
+        
+        // check if fields are empty
         if(verifData()) {
             try {
                 String u = txtUsername.getText();
@@ -222,16 +299,29 @@ public class Register extends javax.swing.JFrame {
                 Path path = Paths.get(imagePath);
                 byte[] img = Files.readAllBytes(path);
                 
-                Queries q = new Queries();
-                q.insertRegister(u, p, f, l, t, img);
+                if (!isUsernameValid(f, l)) {
+                    Queries q = new Queries();
+                    q.insertRegister(u, p, f, l, t, img);
                 
-                loginPage(); 
+                    loginPage();
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Invalid name. Name must not contain any numbers");
+                }
             } catch (IOException ex) {
                 Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_btnRegisterActionPerformed
 
+    private boolean isUsernameValid(String f, String l){
+        
+        if (f.matches(".*\\d.*") || l.matches(".*\\d.*"))
+            return true;
+        
+        return false;
+    }
+    
     private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
         uploadFunction uf = new uploadFunction();
         imagePath = uf.browseImage(jLabelImage);
