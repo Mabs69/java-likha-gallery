@@ -63,6 +63,7 @@ public class Register extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 255, 153));
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(48, 71, 94));
         jPanel1.setForeground(new java.awt.Color(102, 255, 102));
