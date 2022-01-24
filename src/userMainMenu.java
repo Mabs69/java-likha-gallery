@@ -105,6 +105,7 @@ public class userMainMenu extends javax.swing.JFrame {
         btnGallery.setBackground(new java.awt.Color(145, 31, 39));
         btnGallery.setFont(new java.awt.Font("Harrington", 1, 24)); // NOI18N
         btnGallery.setForeground(new java.awt.Color(255, 255, 255));
+        btnGallery.setIcon(new javax.swing.ImageIcon(getClass().getResource("/laura-cleffmann-gEsu1UK-YWQ-unsplash.jpg"))); // NOI18N
         btnGallery.setText("Gallery");
         btnGallery.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,9 +135,9 @@ public class userMainMenu extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(176, 176, 176)
                         .addComponent(btnGallery, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(100, 100, 100)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
                         .addComponent(btnArtists, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(169, Short.MAX_VALUE))
+                .addGap(169, 169, 169))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButtonLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -158,7 +159,7 @@ public class userMainMenu extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGallery, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnArtists, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(161, Short.MAX_VALUE))
+                .addGap(161, 161, 161))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

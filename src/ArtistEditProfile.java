@@ -68,7 +68,6 @@ public class ArtistEditProfile extends javax.swing.JFrame {
         btnChangePass = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1045, 806));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Harrington", 1, 48)); // NOI18N
@@ -95,7 +94,7 @@ public class ArtistEditProfile extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(200, 198, 198));
         jLabel6.setText("Artist Contact Details:");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(56, 469, -1, 40));
-        getContentPane().add(jLabelpic, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, 370, 214));
+        getContentPane().add(jLabelpic, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, 290, 214));
 
         jLabel7.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(200, 198, 198));
@@ -110,7 +109,7 @@ public class ArtistEditProfile extends javax.swing.JFrame {
                 jButtonUploadActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonUpload, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 280, 200, -1));
+        getContentPane().add(jButtonUpload, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 280, 200, -1));
 
         jTextFieldfname.setFont(new java.awt.Font("Candara", 0, 24)); // NOI18N
         getContentPane().add(jTextFieldfname, new org.netbeans.lib.awtextra.AbsoluteConstraints(337, 318, 300, -1));
