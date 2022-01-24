@@ -1,4 +1,5 @@
 
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,9 +31,13 @@ public class artistDescription extends javax.swing.JFrame {
         initComponents();
         userId = uid;
         getArtistInformation();
+        this.getContentPane().setBackground(new Color(48,71,94));
+        
     }
     
-    public artistDescription() {
+    public artistDescription()
+    {
+       
         initComponents();
         userId = 0;
     }
@@ -71,21 +76,27 @@ public class artistDescription extends javax.swing.JFrame {
         jTextAreadesc = new javax.swing.JTextArea();
         txt_contact = new javax.swing.JLabel();
         btn_back = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        txt_name.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txt_name.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
+        txt_name.setForeground(new java.awt.Color(200, 198, 198));
         txt_name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txt_name.setText("NAME");
 
         jTextAreadesc.setColumns(20);
+        jTextAreadesc.setFont(new java.awt.Font("Candara", 0, 24)); // NOI18N
         jTextAreadesc.setRows(5);
         jScrollPane1.setViewportView(jTextAreadesc);
 
-        txt_contact.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txt_contact.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
+        txt_contact.setForeground(new java.awt.Color(200, 198, 198));
         txt_contact.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txt_contact.setText("CONTACT");
 
+        btn_back.setBackground(new java.awt.Color(247, 159, 36));
+        btn_back.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
         btn_back.setText("BACK");
         btn_back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,45 +104,56 @@ public class artistDescription extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Harrington", 1, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(200, 198, 198));
+        jLabel1.setText("Artist Description");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(196, 196, 196)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(txt_name, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txt_contact, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(82, 82, 82)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabelpic, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(101, Short.MAX_VALUE))
+                        .addGap(254, 254, 254)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(391, 391, 391)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_contact, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_name, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(267, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabelpic, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(325, 325, 325))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(246, 246, 246))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(jLabelpic, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                        .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1)))
+                .addGap(31, 31, 31)
+                .addComponent(jLabelpic, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
+                .addGap(33, 33, 33)
                 .addComponent(txt_name)
                 .addGap(18, 18, 18)
                 .addComponent(txt_contact)
-                .addGap(18, 18, 18)
+                .addGap(38, 38, 38)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addGap(63, 63, 63))
         );
 
         pack();
@@ -185,6 +207,7 @@ public class artistDescription extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_back;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelpic;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextAreadesc;
