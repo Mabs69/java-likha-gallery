@@ -78,7 +78,6 @@ public class allArtsView extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1045, 806));
 
         jLabel1.setFont(new java.awt.Font("Harrington", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(200, 198, 198));
@@ -160,8 +159,9 @@ public class allArtsView extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnNext))
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(btnBack)
-                        .addGap(335, 335, 335)
+                        .addGap(323, 323, 323)
                         .addComponent(jLabel1)))
                 .addContainerGap(38, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -183,8 +183,9 @@ public class allArtsView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(btnBack)
-                        .addGap(214, 214, 214)
+                        .addGap(203, 203, 203)
                         .addComponent(btnPrev))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(1, 1, 1)
