@@ -56,7 +56,6 @@ public class ArtistProfile extends javax.swing.JFrame {
         jLabelid = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1045, 806));
 
         jLabel2.setFont(new java.awt.Font("Harrington", 1, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(200, 198, 198));
@@ -90,7 +89,7 @@ public class ArtistProfile extends javax.swing.JFrame {
         jLabeldesc.setForeground(new java.awt.Color(200, 198, 198));
         jLabeldesc.setText("text");
 
-        jLabelcd.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
+        jLabelcd.setFont(new java.awt.Font("Candara", 0, 24)); // NOI18N
         jLabelcd.setForeground(new java.awt.Color(200, 198, 198));
         jLabelcd.setText("text");
 
@@ -196,7 +195,7 @@ public class ArtistProfile extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_edit)
                     .addComponent(btn_back))
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
 
         pack();
