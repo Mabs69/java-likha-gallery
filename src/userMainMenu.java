@@ -105,7 +105,6 @@ public class userMainMenu extends javax.swing.JFrame {
         btnGallery.setBackground(new java.awt.Color(145, 31, 39));
         btnGallery.setFont(new java.awt.Font("Harrington", 1, 24)); // NOI18N
         btnGallery.setForeground(new java.awt.Color(255, 255, 255));
-        btnGallery.setIcon(new javax.swing.ImageIcon(getClass().getResource("/laura-cleffmann-gEsu1UK-YWQ-unsplash.jpg"))); // NOI18N
         btnGallery.setText("Gallery");
         btnGallery.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
